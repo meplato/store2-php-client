@@ -1,0 +1,37 @@
+{
+    "name": "meplato/store2",
+    "type": "library",
+    "description": "A REST interface for the Meplato Store 2.0 API.",
+    "keywords": ["meplato"],
+    "homepage": "https://developer.meplato.com/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Meplato Developers",
+            "email": "support@meplato.com",
+            "homepage": "https://github.com/meplato/store2-api-php-client"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "~5.0"
+    },
+    "require-dev": {
+        "psr/log": "~1.0",
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Meplato\\Store2\\": "src/",
+            "Meplato\\Store2\\Catalogs\\": "src/catalogs/",
+            "Meplato\\Store2\\Products\\": "src/products/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Meplato\\Store2\\Tests\\": "tests/",
+            "Meplato\\Store2\\Tests\\Catalogs\\": "tests/catalogs/",
+            "Meplato\\Store2\\Tests\\Products\\": "tests/products/"
+        }
+    }
+}

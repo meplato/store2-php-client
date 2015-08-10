@@ -1,0 +1,11 @@
+phpunit.xml
+composer.phar
+# composer.lock
+composer-test.lock
+vendor/
+build/artifacts
+artifacts/
+.idea
+.DS_Store
+/genapi.bash
+
