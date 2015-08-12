@@ -404,6 +404,7 @@ class GetService
 	 * - description (string): Description of the catalog.
 	 * - eclasses (array): Eclasses is a list of eCl@ss categories the product belongs to.
 	 * - erpGroupSupplier (string): erpGroupSupplier is the material group of the product on the merchant-/supplier-side.
+	 * - excluded (boolean): Excluded is a flag that indicates whether to exclude this product from the catalog. If true, this product will not be published into the live area.
 	 * - extCategory (string): ExtCategory is the EXT_CATEGORY field of the SAP OCI specification.
 	 * - extCategoryId (string): ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI specification.
 	 * - extProductId (string): ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.

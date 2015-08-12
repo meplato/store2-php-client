@@ -314,11 +314,15 @@ class PublishStatusService
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
-	 * - currentStep (int): CurrentStep is an indicator of the current step in the total list of steps. Use in combination with TotalSteps to retrieve the progress in percent.
+	 * - busy (boolean): Busy indicates whether the catalog is still busy.
+	 * - canceled (boolean): Canceled indicates whether the publishing process has been canceled.
+	 * - currentStep (int64): CurrentStep is an indicator of the current step in the total list of steps. Use in combination with TotalSteps to retrieve the progress in percent.
+	 * - done (boolean): Done indicates whether publishing is finished.
 	 * - kind (string): Kind is store#catalogPublishStatus for this kind of response.
+	 * - percent (int): Percent indicates the progress of the publish request.
 	 * - selfLink (string): SelfLink returns the URL to this page.
 	 * - status (string): Status describes the general status of the publish request.
-	 * - totalSteps (int): TotalSteps is an indicator of the total number steps required to complete the publish request. Use in combination with CurrentStep.
+	 * - totalSteps (int64): TotalSteps is an indicator of the total number steps required to complete the publish request. Use in combination with CurrentStep.
 	 *
 	 * @return array Deserialized JSON object
 	 * @throws \Meplato\Store2\ServiceException if something goes wrong

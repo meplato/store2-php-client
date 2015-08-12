@@ -9,7 +9,6 @@ X-Frame-Options: SAMEORIGIN
 X-Ua-Compatible: IE=edge
 X-Xss-Protection: 1; mode=block
 Date: Tue, 31 Mar 2015 14:18:15 GMT
-Content-Length: 498
 
 {
   "kind": "store#catalog",
