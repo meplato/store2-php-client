@@ -43,13 +43,10 @@ class UpdateTest extends BaseTest
 
 		// Update product
 		$this->mockResponseFromFile('products.update.success');
-		$response = $service->update()->pin('AD8CCDD5F9')->area('work')->id('MBA11@12')->product($updateProduct)->execute();
+		$response = $service->update()->pin('AD8CCDD5F9')->area('work')->spn('MBA11')->product($updateProduct)->execute();
 		$this->assertInternalType('array', $response);
-		$this->assertArrayHasKey('id', $response);
+		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('link', $response);
-		// ID in response contains the identifier of the product -- will be unchanged
-		$this->assertNotNull($response['id']);
-		$this->assertEquals($response['id'], 'MBA11@12');
 	}
 }
 ?>

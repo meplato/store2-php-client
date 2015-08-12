@@ -29,12 +29,14 @@ class GetTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.get.success');
-		$response = $service->get()->pin('AD8CCDD5F9')->area('work')->id('50763599@12')->execute();
+		$response = $service->get()->pin('AD8CCDD5F9')->area('work')->spn('50763599')->execute();
 		$this->assertInternalType('array', $response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#product', $response['kind']);
 		$this->assertArrayHasKey('id', $response);
 		$this->assertEquals('50763599@12', $response['id']);
+		$this->assertArrayHasKey('spn', $response);
+		$this->assertEquals('50763599', $response['spn']);
 		$this->assertArrayHasKey('name', $response);
 
 		$this->assertArrayHasKey('custFields', $response);
@@ -65,7 +67,7 @@ class GetTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.get.not_found');
-		$response = $service->get()->pin('AD8CCDD5F9')->area('work')->id('no-such-product')->execute();
+		$response = $service->get()->pin('AD8CCDD5F9')->area('work')->spn('no-such-product')->execute();
 		$this->assertNull($response);
 	}
 
@@ -82,7 +84,7 @@ class GetTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.get.unauthorized');
-		$service->get()->pin("AD8CCDD5F9")->area('work')->id('50763599@12')->execute();
+		$service->get()->pin("AD8CCDD5F9")->area('work')->spn('50763599')->execute();
 	}
 }
 ?>

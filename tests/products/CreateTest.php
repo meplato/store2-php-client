@@ -37,14 +37,11 @@ class CreateTest extends BaseTest
 		$this->mockResponseFromFile('products.create.success');
 		$response = $service->create()->pin('AD8CCDD5F9')->area('work')->product($createProduct)->execute();
 		$this->assertInternalType('array', $response);
-		$this->assertArrayHasKey('id', $response);
+		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('link', $response);
-		// ID in response contains the identifier of the new product
-		$this->productId = $response['id'];
-		$this->assertNotNull($this->productId);
 
-		// Retrieve the product by ID. You can get the new product like this:
-		//$product = $service->get()->pin('AD8CCDD5F9')->area('work')->id($this->productId)->execute();
+		// Retrieve the product by SPN. You can get the new product like this:
+		//$product = $service->get()->pin('AD8CCDD5F9')->area('work')->spn("MBA11")->execute();
 	}
 
 	/**

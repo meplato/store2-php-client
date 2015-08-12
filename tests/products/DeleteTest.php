@@ -15,34 +15,37 @@ use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
 
 /**
- * Tests replacing a product.
+ * Tests deleting a product.
  */
-class ReplaceTest extends BaseTest
+class DeleteTest extends BaseTest
 {
 	/**
-	 * Tests a successful call to replace a product.
+	 * Tests a successful call to delete a product.
 	 *
 	 * @group products
-	 * @group products.replace
+	 * @group products.delete
 	 */
-	public function testReplace()
+	public function testDelete()
 	{
-		// Replace replaces all fields of a product, unlike Update.
-		$replaceProduct = [
-			'name'        => 'Produkt 1000 (NEU!)',
-			'description' => 'Hier noch eine Produktbeschreibung.',
-			'price'       => 1225.50,
-			'ou'          => 'PCE'
-		];
-
 		$service = $this->getService();
+		$this->mockResponseFromFile('products.delete.success');
+		$service->delete()->pin('AD8CCDD5F9')->area('work')->spn('50763599')->execute();
+	}
 
-		// Update product
-		$this->mockResponseFromFile('products.update.success');
-		$response = $service->replace()->pin('AD8CCDD5F9')->area('work')->spn('MBA11')->product($replaceProduct)->execute();
-		$this->assertInternalType('array', $response);
-		$this->assertArrayHasKey('kind', $response);
-		$this->assertArrayHasKey('link', $response);
+	/**
+	 * Test what happens when a product is not found.
+	 *
+	 * @expectedException        Meplato\Store2\ServiceException
+	 * @expectedExceptionMessage Product not found
+	 *
+	 * @group products
+	 * @group products.delete
+	 */
+	public function testDeleteNotFound()
+	{
+		$service = $this->getService();
+		$this->mockResponseFromFile('products.delete.not_found');
+		$service->delete()->pin('AD8CCDD5F9')->area('work')->spn('no-such-product')->execute();
 	}
 }
 ?>

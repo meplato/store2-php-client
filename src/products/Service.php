@@ -181,7 +181,6 @@ class CreateService
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
-	 * - id (string): ID is the identifier of the newly created product.
 	 * - kind (string): Kind describes this entity.
 	 * - link (string): Link returns a URL to the representation of the newly created product.
 	 *
@@ -235,7 +234,7 @@ class DeleteService
 	private $hdr = [];
 	private $pin;
 	private $area;
-	private $id;
+	private $spn;
 
 	/**
 	 * Creates a new instance of DeleteService.
@@ -258,18 +257,6 @@ class DeleteService
 	}
 
 	/**
-	 * ID is the identifier of the product to delete.
-	 *
-	 * @param $id (string)
-	 * @return $this so that the function is chainable
-	 */
-	function id($id)
-	{
-		$this->id = $id;
-		return $this;
-	}
-
-	/**
 	 * PIN of the catalog.
 	 *
 	 * @param $pin (string)
@@ -278,6 +265,18 @@ class DeleteService
 	function pin($pin)
 	{
 		$this->pin = $pin;
+		return $this;
+	}
+
+	/**
+	 * SPN is the supplier part number of the product to delete.
+	 *
+	 * @param $spn (string)
+	 * @return $this so that the function is chainable
+	 */
+	function spn($spn)
+	{
+		$this->spn = $spn;
 		return $this;
 	}
 
@@ -291,8 +290,8 @@ class DeleteService
 		// Parameters (in template and query string)
 		$params = [];
 		$params["area"] = $this->area;
-		$params["id"] = $this->id;
 		$params["pin"] = $this->pin;
+		$params["spn"] = $this->spn;
 
 		// HTTP Headers
 		$headers = [
@@ -308,7 +307,7 @@ class DeleteService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{id}";
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{spn}";
 
 		$body = NULL;
 
@@ -325,7 +324,7 @@ class DeleteService
 
 
 /**
- * Get returns a single product.
+ * Get returns a single product by its Supplier Part Number (SPN).
  */
 class GetService
 {
@@ -334,7 +333,7 @@ class GetService
 	private $hdr = [];
 	private $pin;
 	private $area;
-	private $id;
+	private $spn;
 
 	/**
 	 * Creates a new instance of GetService.
@@ -357,18 +356,6 @@ class GetService
 	}
 
 	/**
-	 * ID of the product to get.
-	 *
-	 * @param $id (string)
-	 * @return $this so that the function is chainable
-	 */
-	function id($id)
-	{
-		$this->id = $id;
-		return $this;
-	}
-
-	/**
 	 * PIN of the catalog.
 	 *
 	 * @param $pin (string)
@@ -377,6 +364,18 @@ class GetService
 	function pin($pin)
 	{
 		$this->pin = $pin;
+		return $this;
+	}
+
+	/**
+	 * SPN is the supplier part number of the product to get.
+	 *
+	 * @param $spn (string)
+	 * @return $this so that the function is chainable
+	 */
+	function spn($spn)
+	{
+		$this->spn = $spn;
 		return $this;
 	}
 
@@ -454,8 +453,8 @@ class GetService
 		// Parameters (in template and query string)
 		$params = [];
 		$params["area"] = $this->area;
-		$params["id"] = $this->id;
 		$params["pin"] = $this->pin;
+		$params["spn"] = $this->spn;
 
 		// HTTP Headers
 		$headers = [
@@ -471,7 +470,7 @@ class GetService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{id}";
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{spn}";
 
 		$body = NULL;
 
@@ -498,7 +497,7 @@ class ReplaceService
 	private $hdr = [];
 	private $pin;
 	private $area;
-	private $id;
+	private $spn;
 	private $product;
 
 	/**
@@ -518,18 +517,6 @@ class ReplaceService
 	function area($area)
 	{
 		$this->area = $area;
-		return $this;
-	}
-
-	/**
-	 * ID is the identifier of the product to replace.
-	 *
-	 * @param $id (string)
-	 * @return $this so that the function is chainable
-	 */
-	function id($id)
-	{
-		$this->id = $id;
 		return $this;
 	}
 
@@ -558,10 +545,21 @@ class ReplaceService
 	}
 
 	/**
+	 * SPN is the supplier part number of the product to replace.
+	 *
+	 * @param $spn (string)
+	 * @return $this so that the function is chainable
+	 */
+	function spn($spn)
+	{
+		$this->spn = $spn;
+		return $this;
+	}
+
+	/**
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
-	 * - id (string): ID is the identifier of the replaced product.
 	 * - kind (string): Kind describes this entity.
 	 * - link (string): Link returns a URL to the representation of the replaced product.
 	 *
@@ -573,8 +571,8 @@ class ReplaceService
 		// Parameters (in template and query string)
 		$params = [];
 		$params["area"] = $this->area;
-		$params["id"] = $this->id;
 		$params["pin"] = $this->pin;
+		$params["spn"] = $this->spn;
 
 		// HTTP Headers
 		$headers = [
@@ -590,7 +588,7 @@ class ReplaceService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{id}";
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{spn}";
 
 		$body = json_encode($this->product);
 
@@ -877,7 +875,7 @@ class UpdateService
 	private $hdr = [];
 	private $pin;
 	private $area;
-	private $id;
+	private $spn;
 	private $product;
 
 	/**
@@ -897,18 +895,6 @@ class UpdateService
 	function area($area)
 	{
 		$this->area = $area;
-		return $this;
-	}
-
-	/**
-	 * ID is the identifier of the product to update.
-	 *
-	 * @param $id (string)
-	 * @return $this so that the function is chainable
-	 */
-	function id($id)
-	{
-		$this->id = $id;
 		return $this;
 	}
 
@@ -937,10 +923,21 @@ class UpdateService
 	}
 
 	/**
+	 * SPN is the supplier part number of the product to update.
+	 *
+	 * @param $spn (string)
+	 * @return $this so that the function is chainable
+	 */
+	function spn($spn)
+	{
+		$this->spn = $spn;
+		return $this;
+	}
+
+	/**
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
-	 * - id (string): ID is the identifier of the updated product.
 	 * - kind (string): Kind describes this entity.
 	 * - link (string): Link returns a URL to the representation of the updated product.
 	 *
@@ -952,8 +949,8 @@ class UpdateService
 		// Parameters (in template and query string)
 		$params = [];
 		$params["area"] = $this->area;
-		$params["id"] = $this->id;
 		$params["pin"] = $this->pin;
+		$params["spn"] = $this->spn;
 
 		// HTTP Headers
 		$headers = [
@@ -969,7 +966,7 @@ class UpdateService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{id}";
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{spn}";
 
 		$body = json_encode($this->product);
 
