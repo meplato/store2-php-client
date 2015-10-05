@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2015 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.0.beta2
+ * @version 2.0.0.beta3
  * @license Copyright (c) 2015 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store 2 API";
 	/** @@var string API version */
-	const VERSION = "2.0.0.beta2";
+	const VERSION = "2.0.0.beta3";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store2.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -117,6 +117,11 @@ class Service
 	function update()
 	{
 		return new UpdateService($this);
+	}
+
+	function upsert()
+	{
+		return new UpsertService($this);
 	}
 }
 
@@ -401,7 +406,7 @@ class GetService
 	 * - custFields (array): CustFields is an array of generic name/value pairs for customer-specific attributes.
 	 * - datasheet (string): Datasheet is the name of an datasheet file (in the media files) or a URL to the datasheet on the internet.
 	 * - datasheetURL (string): DatasheetURL is the URL to the data sheet (if available).
-	 * - description (string): Description of the catalog.
+	 * - description (string): Description of the product.
 	 * - eclasses (array): Eclasses is a list of eCl@ss categories the product belongs to.
 	 * - erpGroupSupplier (string): erpGroupSupplier is the material group of the product on the merchant-/supplier-side.
 	 * - excluded (boolean): Excluded is a flag that indicates whether to exclude this product from the catalog. If true, this product will not be published into the live area.
@@ -425,7 +430,7 @@ class GetService
 	 * - meplatoPrice (float64): MeplatoPrice is the Meplato price of the product.
 	 * - merchantId (int64): ID of the merchant.
 	 * - mpn (string): MPN is the manufacturer part number.
-	 * - name (string): Name of the catalog.
+	 * - name (string): Name of the product.
 	 * - ou (string): OrderUnit is the order unit of the product, a 3-character ISO code (usually project-specific).
 	 * - price (float64): Price is the net price (per order unit) of the product for the end-user.
 	 * - priceQty (float64): PriceQty is the quantity for which the price is specified (default: 1.0).
@@ -968,6 +973,110 @@ class UpdateService
 		}
 
 		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/{spn}";
+
+		$body = json_encode($this->product);
+
+		// Execute request
+		$response = $this->service->getClient()->execute("post", $urlTemplate, $params, $headers, $body);
+		$status = $response->getStatusCode();
+		if ($status >= 200 && $status <= 299) {
+			return $response->getBodyJSON();
+		}
+		throw new \Meplato\Store2\ServiceException($response);
+	}
+}
+
+
+
+/**
+ * Upsert a product in the given catalog and area. Upsert will create if the
+ * product does not exist yet, otherwise it will update.
+ */
+class UpsertService
+{
+	private $service;
+	private $opt = [];
+	private $hdr = [];
+	private $pin;
+	private $area;
+	private $product;
+
+	/**
+	 * Creates a new instance of UpsertService.
+	 */
+	function __construct($service)
+	{
+		$this->service = $service;
+	}
+
+	/**
+	 * Area of the catalog, e.g. work or live.
+	 *
+	 * @param $area (string)
+	 * @return $this so that the function is chainable
+	 */
+	function area($area)
+	{
+		$this->area = $area;
+		return $this;
+	}
+
+	/**
+	 * PIN of the catalog.
+	 *
+	 * @param $pin (string)
+	 * @return $this so that the function is chainable
+	 */
+	function pin($pin)
+	{
+		$this->pin = $pin;
+		return $this;
+	}
+
+	/**
+	 * Product properties of the new product.
+	 *
+	 * @param $product (array)
+	 * @return $this so that the function is chainable
+	 */
+	function product($product)
+	{
+		$this->product = $product;
+		return $this;
+	}
+
+	/**
+	 * Execute the service call.
+	 *
+	 * The return values has the following properties:
+	 * - kind (string): Kind describes this entity.
+	 * - link (string): Link returns a URL to the representation of the created or updated product.
+	 *
+	 * @return array Deserialized JSON object
+	 * @throws \Meplato\Store2\ServiceException if something goes wrong
+	 */
+	function execute()
+	{
+		// Parameters (in template and query string)
+		$params = [];
+		$params["area"] = $this->area;
+		$params["pin"] = $this->pin;
+
+		// HTTP Headers
+		$headers = [
+			"User-Agent"   => Service::USER_AGENT,
+			"Accept" => "application/json",
+			"Content-Type" => "application/json"
+		];
+
+		$user = $this->service->getUser();
+		$pass = $this->service->getPassword();
+		if (!empty($user) || !empty($pass)) {
+			$credentials = base64_encode("{$user}:{$pass}");
+			$headers["Authorization"] = "Basic {$credentials}";
+		}
+
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/upsert";
 
 		$body = json_encode($this->product);
 
