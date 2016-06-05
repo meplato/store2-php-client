@@ -1,5 +1,5 @@
 <?php namespace Meplato\Store2\Products;
-// Copyright (c) 2015 Meplato GmbH, Switzerland.
+// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -16,10 +16,10 @@ use Meplato\Store2;
 /**
  * Service is the entry-point to the Meplato Store 2 API.
  *
- * @copyright 2014-2015 Meplato GmbH, Switzerland.
+ * @copyright 2014-2016 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.0.beta3
- * @license Copyright (c) 2015 Meplato GmbH, Switzerland. All rights reserved.
+ * @version 2.0.0.beta5
+ * @license Copyright (c) 2015-2016 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
  */
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store 2 API";
 	/** @@var string API version */
-	const VERSION = "2.0.0.beta3";
+	const VERSION = "2.0.0.beta5";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store2.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -392,6 +392,7 @@ class GetService
 	 * - blobs (array): Blobs specifies external data, e.g. images or datasheets.
 	 * - bpn (string): BPN is the buyer part number of the product.
 	 * - catalogId (int64): ID of the catalog this products belongs to.
+	 * - catalogManaged (boolean): CatalogManaged is a flag that indicates whether this product is configurable (or catalog managed in OCI parlance).
 	 * - categories (array): Categories is a list of (supplier-specific) category names the product belongs to.
 	 * - conditions (array): Conditions describes the product conditions, e.g. refurbished or used.
 	 * - created (array): Created is the creation date and time of the product.
@@ -412,7 +413,7 @@ class GetService
 	 * - excluded (boolean): Excluded is a flag that indicates whether to exclude this product from the catalog. If true, this product will not be published into the live area.
 	 * - extCategory (string): ExtCategory is the EXT_CATEGORY field of the SAP OCI specification.
 	 * - extCategoryId (string): ExtCategoryID is the EXT_CATEGORY_ID field of the SAP OCI specification.
-	 * - extProductId (string): ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification.
+	 * - extProductId (string): ExtProductID is the EXT_PRODUCT_ID field of the SAP OCI specification. It is e.g. required for configurable/catalog managed products.
 	 * - extSchemaType (string): ExtSchemaType is the EXT_SCHEMA_TYPE field of the SAP OCI specification.
 	 * - features (array): Features defines product features, i.e. additional properties of the product.
 	 * - gtin (string): GTIN is the global trade item number of the product (used to be EAN).
