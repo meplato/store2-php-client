@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2016 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.0.beta5
+ * @version 2.0.0.beta6
  * @license Copyright (c) 2015-2016 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store 2 API";
 	/** @@var string API version */
-	const VERSION = "2.0.0.beta5";
+	const VERSION = "2.0.0.beta6";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store2.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -145,14 +145,15 @@ class GetService
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
+	 * - country (string): Country is the ISO-3166 alpha-2 code for the country that the catalog is destined for (e.g. DE or US).
 	 * - created (array): Created is the creation date and time of the catalog.
-	 * - currency (string): Currency is the ISO-4217 currency code that is used for all products in the catalog.
+	 * - currency (string): Currency is the ISO-4217 currency code that is used for all products in the catalog (e.g. EUR or USD).
 	 * - description (string): Description of the catalog.
 	 * - erpNumberBuyer (string): ERPNumberBuyer is the number of the merchant of this catalog in the SAP/ERP system of the buyer.
 	 * - hubUrl (string): HubURL represents the Meplato Hub URL for this catalog, e.g. https://hub.meplato.de/forward/12345/shop
 	 * - id (int64): ID is a unique (internal) identifier of the catalog.
 	 * - kind (string): Kind is store#catalog for a catalog entity.
-	 * - language (string): Language is the IETF language tag of the language of all products in the catalog.
+	 * - language (string): Language is the IETF language tag of the language of all products in the catalog (e.g. de or pt-BR).
 	 * - lastImported (array): LastImported is the date and time the catalog was last imported.
 	 * - lastPublished (array): LastPublished is the date and time the catalog was last published.
 	 * - merchantId (int64): ID of the merchant.
@@ -163,13 +164,14 @@ class GetService
 	 * - ociUrl (string): OciURL represents the OCI punchout URL that the supplier specified for this catalog, e.g. https://my-shop.com/oci?param1=a
 	 * - pin (string): PIN of the catalog.
 	 * - projectId (int64): ID of the project.
+	 * - projectName (string): Name of the project.
 	 * - publishedVersion (array): PublishedVersion is the version number of the published catalog. It is incremented when the publish task publishes the catalog.
 	 * - selfLink (string): URL to this page.
 	 * - slug (string): Slug of the catalog.
 	 * - state (string): State describes the current state of the catalog, e.g. idle.
 	 * - updated (array): Updated is the last modification date and time of the catalog.
-	 * - validFrom (array): ValidFrom is the date the catalog becomes effective.
-	 * - validUntil (array): ValidUntil is the date the catalog expires.
+	 * - validFrom (array): ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
+	 * - validUntil (array): ValidUntil is the date the catalog expires (YYYY-MM-DD).
 	 *
 	 * @return array Deserialized JSON object
 	 * @throws \Meplato\Store2\ServiceException if something goes wrong
