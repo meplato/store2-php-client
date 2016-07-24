@@ -156,6 +156,7 @@ class GetService
 	 * - language (string): Language is the IETF language tag of the language of all products in the catalog (e.g. de or pt-BR).
 	 * - lastImported (array): LastImported is the date and time the catalog was last imported.
 	 * - lastPublished (array): LastPublished is the date and time the catalog was last published.
+	 * - lockedForDownload (boolean): LockedForDownload indicates whether a catalog is locked and cannot be downloaded.
 	 * - merchantId (int64): ID of the merchant.
 	 * - merchantName (string): Name of the merchant.
 	 * - name (string): Name of the catalog.
@@ -166,6 +167,8 @@ class GetService
 	 * - projectId (int64): ID of the project.
 	 * - projectName (string): Name of the project.
 	 * - publishedVersion (array): PublishedVersion is the version number of the published catalog. It is incremented when the publish task publishes the catalog.
+	 * - sageContract (string): SageContract represents the internal identifier at Meplato for the contract of this catalog.
+	 * - sageNumber (string): SageNumber represents the internal identifier at Meplato for the merchant of this catalog.
 	 * - selfLink (string): URL to this page.
 	 * - slug (string): Slug of the catalog.
 	 * - state (string): State describes the current state of the catalog, e.g. idle.
