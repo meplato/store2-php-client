@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2016 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.0.beta6
+ * @version 2.0.0.beta8
  * @license Copyright (c) 2015-2016 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store 2 API";
 	/** @@var string API version */
-	const VERSION = "2.0.0.beta6";
+	const VERSION = "2.0.0.beta8";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store2.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -172,6 +172,13 @@ class GetService
 	 * - selfLink (string): URL to this page.
 	 * - slug (string): Slug of the catalog.
 	 * - state (string): State describes the current state of the catalog, e.g. idle.
+	 * - supportsOciBackgroundsearch (boolean): SupportsOciBackgroundsearch indicates whether a catalog supports the OCI BACKGROUNDSEARCH transaction.
+	 * - supportsOciDetail (boolean): SupportsOciDetail indicates whether a catalog supports the OCI DETAIL transaction.
+	 * - supportsOciDetailadd (boolean): SupportsOciDetailadd indicates whether a catalog supports the OCI DETAILADD transaction.
+	 * - supportsOciDownloadjson (boolean): SupportsOciDownloadjson indicates whether a catalog supports the OCI DOWNLOADJSON transaction.
+	 * - supportsOciQuantitycheck (boolean): SupportsOciQuantitycheck indicates whether a catalog supports the OCI QUANTITYCHECK transaction.
+	 * - supportsOciSourcing (boolean): SupportsOciSourcing indicates whether a catalog supports the OCI SOURCING transaction.
+	 * - supportsOciValidate (boolean): SupportsOciValidate indicates whether a catalog supports the OCI VALIDATE transaction.
 	 * - updated (array): Updated is the last modification date and time of the catalog.
 	 * - validFrom (array): ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
 	 * - validUntil (array): ValidUntil is the date the catalog expires (YYYY-MM-DD).
