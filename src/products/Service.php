@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2016 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.0.beta8
+ * @version 2.0.0.beta9
  * @license Copyright (c) 2015-2016 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store 2 API";
 	/** @@var string API version */
-	const VERSION = "2.0.0.beta8";
+	const VERSION = "2.0.0.beta9";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store2.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
