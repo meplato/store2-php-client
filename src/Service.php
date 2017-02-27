@@ -12,23 +12,23 @@
 // the License.
 
 /**
- * Service is the entry-point to the Meplato Store 2 API.
+ * Service is the entry-point to the Meplato Store API.
  *
- * @copyright 2014-2016 Meplato GmbH, Switzerland.
+ * @copyright 2014-2017 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.0.beta9
- * @license Copyright (c) 2015-2016 Meplato GmbH, Switzerland. All rights reserved.
+ * @version 2.0.0
+ * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
  */
 class Service
 {
 	/** @@var string API title */
-	const TITLE = "Meplato Store 2 API";
+	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.0.0.beta9";
+	const VERSION = "2.0.0";
 	/** @@var string Base URL of the service, including the path */
-	const BASE_URL = "https://store2.meplato.com/api/v2";
+	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
 	const USER_AGENT = "meplato-php-client/2.0";
 

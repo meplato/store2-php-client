@@ -14,23 +14,23 @@
 use Meplato\Store2;
 
 /**
- * Service is the entry-point to the Meplato Store 2 API.
+ * Service is the entry-point to the Meplato Store API.
  *
- * @copyright 2014-2016 Meplato GmbH, Switzerland.
+ * @copyright 2014-2017 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.0.beta9
- * @license Copyright (c) 2015-2016 Meplato GmbH, Switzerland. All rights reserved.
+ * @version 2.0.0
+ * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
  */
 class Service
 {
 	/** @@var string API title */
-	const TITLE = "Meplato Store 2 API";
+	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.0.0.beta9";
+	const VERSION = "2.0.0";
 	/** @@var string Base URL of the service, including the path */
-	const BASE_URL = "https://store2.meplato.com/api/v2";
+	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
 	const USER_AGENT = "meplato-php-client/2.0";
 
@@ -388,6 +388,7 @@ class GetService
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
+	 * - asin (string): ASIN is the unique Amazon article number of the product.
 	 * - availability (array): Availability allows the update of product availability data, e.g. the number of items in stock or the date when the product will be available again. 
 	 * - blobs (array): Blobs specifies external data, e.g. images or datasheets.
 	 * - bpn (string): BPN is the buyer part number of the product.
@@ -431,6 +432,8 @@ class GetService
 	 * - meplatoPrice (float64): MeplatoPrice is the Meplato price of the product.
 	 * - merchantId (int64): ID of the merchant.
 	 * - mpn (string): MPN is the manufacturer part number.
+	 * - multiSupplierId (string): MultiSupplierID represents an optional field for the unique identifier of a supplier in a multi-supplier catalog.
+	 * - multiSupplierName (string): MultiSupplierName represents an optional field for the name of the supplier in a multi-supplier catalog.
 	 * - name (string): Name of the product.
 	 * - ou (string): OrderUnit is the order unit of the product, a 3-character ISO code (usually project-specific).
 	 * - price (float64): Price is the net price (per order unit) of the product for the end-user.
@@ -446,7 +449,8 @@ class GetService
 	 * - selfLink (string): URL to this page.
 	 * - service (boolean): Service indicates if the is a good (false) or a service (true). The default value is false.
 	 * - spn (string): SPN is the supplier part number.
-	 * - taxCode (string): TaxCode to use for this product. This is typically project-specific.
+	 * - taxCode (string): TaxCode to use for this product.
+	 * - taxRate (float64): TaxRate for this product, a numeric value between 0.0 and 1.0.
 	 * - thumbnail (string): Thumbnail is the name of an thumbnail image file (in the media files) or a URL to the image on the internet.
 	 * - thumbnailURL (string): ThubmnailURL is the URL to the thumbnail image.
 	 * - unspscs (array): Unspscs is a list of UNSPSC categories the product belongs to.
