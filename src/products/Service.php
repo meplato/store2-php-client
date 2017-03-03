@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2017 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.0
+ * @version 2.0.1
  * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.0.0";
+	const VERSION = "2.0.1";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -804,6 +804,18 @@ class SearchService
 	}
 
 	/**
+	 * Sort order, e.g. name, spn, id or -created (default: score).
+	 *
+	 * @param $sort (string)
+	 * @return $this so that the function is chainable
+	 */
+	function sort($sort)
+	{
+		$this->opt["sort"] = $sort;
+		return $this;
+	}
+
+	/**
 	 * Take defines how many products to return (max 100, default 20).
 	 *
 	 * @param $take (int64)
@@ -841,6 +853,9 @@ class SearchService
 		if (array_key_exists("skip", $this->opt)) {
 			$params["skip"] = $this->opt["skip"];
 		}
+		if (array_key_exists("sort", $this->opt)) {
+			$params["sort"] = $this->opt["sort"];
+		}
 		if (array_key_exists("take", $this->opt)) {
 			$params["take"] = $this->opt["take"];
 		}
@@ -859,7 +874,7 @@ class SearchService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products{?q,skip,take}";
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products{?q,skip,take,sort}";
 
 		$body = NULL;
 
