@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2017 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.1
+ * @version 2.0.2
  * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.0.1";
+	const VERSION = "2.0.2";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -159,6 +159,7 @@ class GetService
 	 * - lastPublished (array): LastPublished is the date and time the catalog was last published.
 	 * - lockedForDownload (boolean): LockedForDownload indicates whether a catalog is locked and cannot be downloaded.
 	 * - merchantId (int64): ID of the merchant.
+	 * - merchantMpcc (string): MPCC of the merchant.
 	 * - merchantName (string): Name of the merchant.
 	 * - name (string): Name of the catalog.
 	 * - numProductsLive (array): Number of products currently in the live area (only returned when getting the details of a catalog).
@@ -167,6 +168,7 @@ class GetService
 	 * - pin (string): PIN of the catalog.
 	 * - project (array): Project references the project that this catalog belongs to.
 	 * - projectId (int64): ID of the project.
+	 * - projectMpcc (string): MPCC of the project.
 	 * - projectName (string): Name of the project.
 	 * - publishedVersion (array): PublishedVersion is the version number of the published catalog. It is incremented when the publish task publishes the catalog.
 	 * - sageContract (string): SageContract represents the internal identifier at Meplato for the contract of this catalog.
@@ -492,6 +494,18 @@ class SearchService
 	}
 
 	/**
+	 * Q defines are full text query.
+	 *
+	 * @param $q (string)
+	 * @return $this so that the function is chainable
+	 */
+	function q($q)
+	{
+		$this->opt["q"] = $q;
+		return $this;
+	}
+
+	/**
 	 * Skip specifies how many catalogs to skip (default 0).
 	 *
 	 * @param $skip (int64)
@@ -545,6 +559,9 @@ class SearchService
 	{
 		// Parameters (in template and query string)
 		$params = [];
+		if (array_key_exists("q", $this->opt)) {
+			$params["q"] = $this->opt["q"];
+		}
 		if (array_key_exists("skip", $this->opt)) {
 			$params["skip"] = $this->opt["skip"];
 		}
@@ -569,7 +586,7 @@ class SearchService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/catalogs{?skip,take,sort}";
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs{?q,skip,take,sort}";
 
 		$body = NULL;
 
