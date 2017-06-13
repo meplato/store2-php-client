@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2017 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.2
+ * @version 2.0.3
  * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.0.2";
+	const VERSION = "2.0.3";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -150,6 +150,7 @@ class GetService
 	 * - currency (string): Currency is the ISO-4217 currency code that is used for all products in the catalog (e.g. EUR or USD).
 	 * - description (string): Description of the catalog.
 	 * - erpNumberBuyer (string): ERPNumberBuyer is the number of the merchant of this catalog in the SAP/ERP system of the buyer.
+	 * - expired (boolean): Expired indicates whether the catalog is expired as of now.
 	 * - hubUrl (string): HubURL represents the Meplato Hub URL for this catalog, e.g. https://hub.meplato.de/forward/12345/shop
 	 * - id (int64): ID is a unique (internal) identifier of the catalog.
 	 * - keepOriginalBlobs (boolean): KeepOriginalBlobs indicates whether the URLs in a blob will be passed through and not cached by Store.
