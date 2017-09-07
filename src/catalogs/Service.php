@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2017 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.3
+ * @version 2.0.4
  * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.0.3";
+	const VERSION = "2.0.4";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -161,6 +161,7 @@ class GetService
 	 * - lockedForDownload (boolean): LockedForDownload indicates whether a catalog is locked and cannot be downloaded.
 	 * - merchantId (int64): ID of the merchant.
 	 * - merchantMpcc (string): MPCC of the merchant.
+	 * - merchantMpsc (string): MPSC of the merchant.
 	 * - merchantName (string): Name of the merchant.
 	 * - name (string): Name of the catalog.
 	 * - numProductsLive (array): Number of products currently in the live area (only returned when getting the details of a catalog).
@@ -169,6 +170,7 @@ class GetService
 	 * - pin (string): PIN of the catalog.
 	 * - project (array): Project references the project that this catalog belongs to.
 	 * - projectId (int64): ID of the project.
+	 * - projectMpbc (string): MPBC of the project.
 	 * - projectMpcc (string): MPCC of the project.
 	 * - projectName (string): Name of the project.
 	 * - publishedVersion (array): PublishedVersion is the version number of the published catalog. It is incremented when the publish task publishes the catalog.
