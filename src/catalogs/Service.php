@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2017 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.0.4
+ * @version 2.1.0
  * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.0.4";
+	const VERSION = "2.1.0";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -149,6 +149,9 @@ class GetService
 	 * - created (array): Created is the creation date and time of the catalog.
 	 * - currency (string): Currency is the ISO-4217 currency code that is used for all products in the catalog (e.g. EUR or USD).
 	 * - description (string): Description of the catalog.
+	 * - downloadChecksum (string): DownloadChecksum represents the checksum of the catalog last downloaded.
+	 * - downloadInterval (string): DownloadInterval represents the interval to use for checking new versions of a catalog at the DownloadURL.
+	 * - downloadUrl (string): DownloadURL represents a URL which is periodically downloaded and imported as a new catalog.
 	 * - erpNumberBuyer (string): ERPNumberBuyer is the number of the merchant of this catalog in the SAP/ERP system of the buyer.
 	 * - expired (boolean): Expired indicates whether the catalog is expired as of now.
 	 * - hubUrl (string): HubURL represents the Meplato Hub URL for this catalog, e.g. https://hub.meplato.de/forward/12345/shop
@@ -186,6 +189,7 @@ class GetService
 	 * - supportsOciQuantitycheck (boolean): SupportsOciQuantitycheck indicates whether a catalog supports the OCI QUANTITYCHECK transaction.
 	 * - supportsOciSourcing (boolean): SupportsOciSourcing indicates whether a catalog supports the OCI SOURCING transaction.
 	 * - supportsOciValidate (boolean): SupportsOciValidate indicates whether a catalog supports the OCI VALIDATE transaction.
+	 * - type (string): Type of catalog, e.g. corporate or basic.
 	 * - updated (array): Updated is the last modification date and time of the catalog.
 	 * - validFrom (array): ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
 	 * - validUntil (array): ValidUntil is the date the catalog expires (YYYY-MM-DD).

@@ -9,7 +9,7 @@
         {
             "name": "Meplato Developers",
             "email": "support@meplato.com",
-            "homepage": "https://github.com/meplato/store2-api-php-client"
+            "homepage": "https://github.com/meplato/store2-php-client"
         }
     ],
     "require": {
@@ -24,14 +24,16 @@
         "psr-4": {
             "Meplato\\Store2\\": "src/",
             "Meplato\\Store2\\Catalogs\\": "src/catalogs/",
-            "Meplato\\Store2\\Products\\": "src/products/"
+            "Meplato\\Store2\\Products\\": "src/products/",
+            "Meplato\\Store2\\Jobs\\": "src/jobs/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Meplato\\Store2\\Tests\\": "tests/",
             "Meplato\\Store2\\Tests\\Catalogs\\": "tests/catalogs/",
-            "Meplato\\Store2\\Tests\\Products\\": "tests/products/"
+            "Meplato\\Store2\\Tests\\Products\\": "tests/products/",
+            "Meplato\\Store2\\Tests\\Jobs\\": "tests/jobs/"
         }
     }
 }
