@@ -16,10 +16,10 @@ use Meplato\Store2;
 /**
  * Service is the entry-point to the Meplato Store API.
  *
- * @copyright 2014-2017 Meplato GmbH, Switzerland.
+ * @copyright 2014-2018 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.0
- * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
+ * @version 2.1.1
+ * @license Copyright (c) 2015-2018 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
  */
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.0";
+	const VERSION = "2.1.1";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -158,6 +158,7 @@ class GetService
 	 * - id (int64): ID is a unique (internal) identifier of the catalog.
 	 * - keepOriginalBlobs (boolean): KeepOriginalBlobs indicates whether the URLs in a blob will be passed through and not cached by Store.
 	 * - kind (string): Kind is store#catalog for a catalog entity.
+	 * - kpiSummary (array): KPISummary returns the outcome of analyzing the contents for key performance indicators.
 	 * - language (string): Language is the IETF language tag of the language of all products in the catalog (e.g. de or pt-BR).
 	 * - lastImported (array): LastImported is the date and time the catalog was last imported.
 	 * - lastPublished (array): LastPublished is the date and time the catalog was last published.

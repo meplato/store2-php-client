@@ -16,10 +16,10 @@ use Meplato\Store2;
 /**
  * Service is the entry-point to the Meplato Store API.
  *
- * @copyright 2014-2017 Meplato GmbH, Switzerland.
+ * @copyright 2014-2018 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.0
- * @license Copyright (c) 2015-2017 Meplato GmbH, Switzerland. All rights reserved.
+ * @version 2.1.1
+ * @license Copyright (c) 2015-2018 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
  */
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.0";
+	const VERSION = "2.1.1";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
