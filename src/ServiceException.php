@@ -19,11 +19,7 @@ class ServiceException extends \RuntimeException
   {
 	$this->response = $response;
 
-	try {
-		$body = $response->getBodyJSON();
-	} catch(Exception $e) {
-		$body = null;
-	}
+	$body = $response->getBodyJSON();
 	$code = $response->getStatusCode();
 	$message = "Service failed with status code {$code}";
 	if ($body != null && array_key_exists('error', $body)) {

@@ -104,12 +104,17 @@ class HttpResponse implements HttpResponseInterface
 
   /**
    * Returns the body of the HTTP response, interpreted as JSON.
+   * If there is a parsing error, an empty array is returned.
    *
    * @return array
    */
   public function getBodyJSON()
   {
-	return $this->response->json();
+	try {
+	  return $this->response->json();
+	} catch(Exception $e) {
+	  return [];
+	}
   }
 }
 ?>
