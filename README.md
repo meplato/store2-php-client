@@ -1,5 +1,7 @@
 # Meplato Store 2 API for PHP
 
+[![Build Status](https://travis-ci.org/meplato/store2-php-client.svg?branch=master)](https://travis-ci.org/meplato/store2-php-client)
+
 This is the PHP client for the Meplato Store 2 API. It consists of a library
 to integrate your infrastructure with Meplato suite for suppliers.
 
