@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2018 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.1
+ * @version 2.1.2
  * @license Copyright (c) 2015-2018 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.1";
+	const VERSION = "2.1.2";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -148,6 +148,7 @@ class GetService
 	 * - country (string): Country is the ISO-3166 alpha-2 code for the country that the catalog is destined for (e.g. DE or US).
 	 * - created (array): Created is the creation date and time of the catalog.
 	 * - currency (string): Currency is the ISO-4217 currency code that is used for all products in the catalog (e.g. EUR or USD).
+	 * - custFields (array): CustFields is an array of generic name/value pairs for customer-specific attributes.
 	 * - description (string): Description of the catalog.
 	 * - downloadChecksum (string): DownloadChecksum represents the checksum of the catalog last downloaded.
 	 * - downloadInterval (string): DownloadInterval represents the interval to use for checking new versions of a catalog at the DownloadURL.
