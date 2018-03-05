@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2018 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.2
+ * @version 2.1.3
  * @license Copyright (c) 2015-2018 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.2";
+	const VERSION = "2.1.3";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -457,6 +457,7 @@ class GetService
 	 * - image (string): Image is the name of an image file (in the media files) or a URL to the image on the internet.
 	 * - imageURL (string): ImageURL is the URL to the image.
 	 * - incomplete (array): Incomplete is a flag that indicates whether this product is incomplete.
+	 * - intrastat (array): Intrastat specifies required data for Intrastat messages. 
 	 * - isPassword (array): IsPassword is a flag that indicates whether this product will be used to purchase a password, e.g. for a software product.
 	 * - keepPrice (array): KeepPrice is a flag that indicates whether the price of the product will or will not be calculated by the catalog.
 	 * - keywords (array): Keywords is a list of aliases for the product.
