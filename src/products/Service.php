@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2014-2018 Meplato GmbH, Switzerland.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.3
+ * @version 2.1.4
  * @license Copyright (c) 2015-2018 Meplato GmbH, Switzerland. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.3";
+	const VERSION = "2.1.4";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -402,6 +402,7 @@ class GetService
 	 * - contractItem (string): ContractItem represents line number in the contract to be used when purchasing this product. See also Contract.
 	 * - conversionDenumerator (array): ConversionDenumerator is the denumerator for calculating price quantities.
 	 * - conversionNumerator (array): ConversionNumerator is the numerator for calculating price quantities.
+	 * - country (string): Country represents the ISO code of the country of origin, i.e. the country where the product has been created/produced, e.g. DE. If unspecified, the field is initialized with the catalog's country field. 
 	 * - created (array): Created is the creation date and time of the product.
 	 * - cu (string): ContentUnit is the content unit of the product, a 3-character ISO code (usually project-specific).
 	 * - cuPerOu (float64): CuPerOu describes the number of content units per order unit, e.g. the 12 in '1 case contains 12 bottles'.
