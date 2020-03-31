@@ -1,5 +1,5 @@
 <?php namespace Meplato\Store2\Products;
-// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
+// Copyright (c) 2013-present Meplato GmbH.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -16,10 +16,10 @@ use Meplato\Store2;
 /**
  * Service is the entry-point to the Meplato Store API.
  *
- * @copyright 2014-2018 Meplato GmbH, Switzerland.
+ * @copyright 2013-present Meplato GmbH.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.5
- * @license Copyright (c) 2015-2018 Meplato GmbH, Switzerland. All rights reserved.
+ * @version 2.1.6
+ * @license Copyright (c) 2015-2020 Meplato GmbH. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
  */
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.5";
+	const VERSION = "2.1.6";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -406,7 +406,7 @@ class GetService
 	 * - created (array): Created is the creation date and time of the product.
 	 * - cu (string): ContentUnit is the content unit of the product, a 3-character ISO code (usually project-specific).
 	 * - cuPerOu (float64): CuPerOu describes the number of content units per order unit, e.g. the 12 in '1 case contains 12 bottles'.
-	 * - currency (string): Currency is the ISO currency code for the prices, e.g. EUR or GBP.
+	 * - currency (string): Currency is the ISO currency code for the prices, e.g. EUR or GBP. If you pass an empty currency code, it will be initialized with the catalog's currency. 
 	 * - custField1 (string): CustField1 is the CUST_FIELD1 of the SAP OCI specification. It has a maximum length of 10 characters. 
 	 * - custField2 (string): CustField2 is the CUST_FIELD2 of the SAP OCI specification. It has a maximum length of 10 characters. 
 	 * - custField3 (string): CustField3 is the CUST_FIELD3 of the SAP OCI specification. It has a maximum length of 10 characters. 
