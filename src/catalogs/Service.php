@@ -1,5 +1,5 @@
 <?php namespace Meplato\Store2\Catalogs;
-// Copyright (c) 2015-2016 Meplato GmbH, Switzerland.
+// Copyright (c) 2013-present Meplato GmbH.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
 // in compliance with the License. You may obtain a copy of the License at
@@ -16,10 +16,10 @@ use Meplato\Store2;
 /**
  * Service is the entry-point to the Meplato Store API.
  *
- * @copyright 2014-2018 Meplato GmbH, Switzerland.
+ * @copyright 2013-present Meplato GmbH.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.5
- * @license Copyright (c) 2015-2018 Meplato GmbH, Switzerland. All rights reserved.
+ * @version 2.1.7
+ * @license Copyright (c) 2015-2020 Meplato GmbH. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
  */
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.5";
+	const VERSION = "2.1.7";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -84,6 +84,11 @@ class Service
 		$this->password = $password;
 	}
 
+	function create()
+	{
+		return new CreateService($this);
+	}
+
 	function get()
 	{
 		return new GetService($this);
@@ -109,6 +114,130 @@ class Service
 		return new SearchService($this);
 	}
 }
+
+
+/**
+ * Create a new catalog (admin only).
+ */
+class CreateService
+{
+	private $service;
+	private $opt = [];
+	private $hdr = [];
+	private $catalog;
+
+	/**
+	 * Creates a new instance of CreateService.
+	 */
+	function __construct($service)
+	{
+		$this->service = $service;
+	}
+
+	/**
+	 * Catalog properties of the new catalog.
+	 *
+	 * @param $catalog (array)
+	 * @return $this so that the function is chainable
+	 */
+	function catalog($catalog)
+	{
+		$this->catalog = $catalog;
+		return $this;
+	}
+
+	/**
+	 * Execute the service call.
+	 *
+	 * The return values has the following properties:
+	 * - country (string): Country is the ISO-3166 alpha-2 code for the country that the catalog is destined for (e.g. DE or US).
+	 * - created (array): Created is the creation date and time of the catalog.
+	 * - currency (string): Currency is the ISO-4217 currency code that is used for all products in the catalog (e.g. EUR or USD).
+	 * - custFields (array): CustFields is an array of generic name/value pairs for customer-specific attributes.
+	 * - description (string): Description of the catalog.
+	 * - downloadChecksum (string): DownloadChecksum represents the checksum of the catalog last downloaded.
+	 * - downloadInterval (string): DownloadInterval represents the interval to use for checking new versions of a catalog at the DownloadURL.
+	 * - downloadUrl (string): DownloadURL represents a URL which is periodically downloaded and imported as a new catalog.
+	 * - erpNumberBuyer (string): ERPNumberBuyer is the number of the merchant of this catalog in the SAP/ERP system of the buyer.
+	 * - expired (boolean): Expired indicates whether the catalog is expired as of now.
+	 * - hubUrl (string): HubURL represents the Meplato Hub URL for this catalog, e.g. https://hub.meplato.de/forward/12345/shop
+	 * - id (int64): ID is a unique (internal) identifier of the catalog.
+	 * - keepOriginalBlobs (boolean): KeepOriginalBlobs indicates whether the URLs in a blob will be passed through and not cached by Store.
+	 * - kind (string): Kind is store#catalog for a catalog entity.
+	 * - kpiSummary (array): KPISummary returns the outcome of analyzing the contents for key performance indicators.
+	 * - language (string): Language is the IETF language tag of the language of all products in the catalog (e.g. de or pt-BR).
+	 * - lastImported (array): LastImported is the date and time the catalog was last imported.
+	 * - lastPublished (array): LastPublished is the date and time the catalog was last published.
+	 * - lockedForDownload (boolean): LockedForDownload indicates whether a catalog is locked and cannot be downloaded.
+	 * - merchantId (int64): ID of the merchant.
+	 * - merchantMpcc (string): MPCC of the merchant.
+	 * - merchantMpsc (string): MPSC of the merchant.
+	 * - merchantName (string): Name of the merchant.
+	 * - name (string): Name of the catalog.
+	 * - numProductsLive (array): Number of products currently in the live area (only returned when getting the details of a catalog).
+	 * - numProductsWork (array): Number of products currently in the work area (only returned when getting the details of a catalog).
+	 * - ociUrl (string): OciURL represents the OCI punchout URL that the supplier specified for this catalog, e.g. https://my-shop.com/oci?param1=a
+	 * - pin (string): PIN of the catalog.
+	 * - project (array): Project references the project that this catalog belongs to.
+	 * - projectId (int64): ID of the project.
+	 * - projectMpbc (string): MPBC of the project.
+	 * - projectMpcc (string): MPCC of the project.
+	 * - projectName (string): Name of the project.
+	 * - publishedVersion (array): PublishedVersion is the version number of the published catalog. It is incremented when the publish task publishes the catalog.
+	 * - sageContract (string): SageContract represents the internal identifier at Meplato for the contract of this catalog.
+	 * - sageNumber (string): SageNumber represents the internal identifier at Meplato for the merchant of this catalog.
+	 * - selfLink (string): URL to this page.
+	 * - slug (string): Slug of the catalog.
+	 * - state (string): State describes the current state of the catalog, e.g. idle.
+	 * - supportsOciBackgroundsearch (boolean): SupportsOciBackgroundsearch indicates whether a catalog supports the OCI BACKGROUNDSEARCH transaction.
+	 * - supportsOciDetail (boolean): SupportsOciDetail indicates whether a catalog supports the OCI DETAIL transaction.
+	 * - supportsOciDetailadd (boolean): SupportsOciDetailadd indicates whether a catalog supports the OCI DETAILADD transaction.
+	 * - supportsOciDownloadjson (boolean): SupportsOciDownloadjson indicates whether a catalog supports the OCI DOWNLOADJSON transaction.
+	 * - supportsOciQuantitycheck (boolean): SupportsOciQuantitycheck indicates whether a catalog supports the OCI QUANTITYCHECK transaction.
+	 * - supportsOciSourcing (boolean): SupportsOciSourcing indicates whether a catalog supports the OCI SOURCING transaction.
+	 * - supportsOciValidate (boolean): SupportsOciValidate indicates whether a catalog supports the OCI VALIDATE transaction.
+	 * - target (string): Target represents the target system which can be either an empty string, "catscout" or "mall".
+	 * - type (string): Type of catalog, e.g. corporate or basic.
+	 * - updated (array): Updated is the last modification date and time of the catalog.
+	 * - validFrom (array): ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
+	 * - validUntil (array): ValidUntil is the date the catalog expires (YYYY-MM-DD).
+	 *
+	 * @return array Deserialized JSON object
+	 * @throws \Meplato\Store2\ServiceException if something goes wrong
+	 */
+	function execute()
+	{
+		// Parameters (in template and query string)
+		$params = [];
+
+		// HTTP Headers
+		$headers = [
+			"User-Agent"   => Service::USER_AGENT,
+			"Accept" => "application/json",
+			"Content-Type" => "application/json"
+		];
+
+		$user = $this->service->getUser();
+		$pass = $this->service->getPassword();
+		if (!empty($user) || !empty($pass)) {
+			$credentials = base64_encode("{$user}:{$pass}");
+			$headers["Authorization"] = "Basic {$credentials}";
+		}
+
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs";
+
+		$body = json_encode($this->catalog);
+
+		// Execute request
+		$response = $this->service->getClient()->execute("post", $urlTemplate, $params, $headers, $body);
+		$status = $response->getStatusCode();
+		if ($status >= 200 && $status <= 299) {
+			return $response->getBodyJSON();
+		}
+		throw new \Meplato\Store2\ServiceException($response);
+	}
+}
+
 
 
 /**
@@ -191,6 +320,7 @@ class GetService
 	 * - supportsOciQuantitycheck (boolean): SupportsOciQuantitycheck indicates whether a catalog supports the OCI QUANTITYCHECK transaction.
 	 * - supportsOciSourcing (boolean): SupportsOciSourcing indicates whether a catalog supports the OCI SOURCING transaction.
 	 * - supportsOciValidate (boolean): SupportsOciValidate indicates whether a catalog supports the OCI VALIDATE transaction.
+	 * - target (string): Target represents the target system which can be either an empty string, "catscout" or "mall".
 	 * - type (string): Type of catalog, e.g. corporate or basic.
 	 * - updated (array): Updated is the last modification date and time of the catalog.
 	 * - validFrom (array): ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
