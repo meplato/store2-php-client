@@ -69,5 +69,41 @@ class ScrollTest extends BaseTest
 		$items = $response['items'];
 		$this->assertInternalType('array', $items);
 	}
+
+	/**
+	 * Tests a successful start of scrolling through a differential download of the products of a catalog.
+	 *
+	 * @group products
+	 * @group products.scroll
+	 */
+	public function testDifferentialScroll()
+	{
+		$service = $this->getService();
+		$this->mockResponseFromFile('products.scroll.differential.success');
+
+        // Get differential update (from version 2 to 3)
+		// The first call might not necessarily return products.
+		// But it returns a page token which we'll use to get the next slice of products.
+		$response = $service->scroll()->pin('AD8CCDD5F9')->area('work')->version(3)->mode("diff")->execute();
+		$this->assertInternalType('array', $response);
+		$this->assertArrayHasKey('kind', $response);
+		$this->assertEquals('store#products', $response['kind']);
+		$this->assertArrayHasKey('selfLink', $response);
+		$this->assertArrayHasKey('nextLink', $response);
+		$this->assertArrayHasKey('totalItems', $response);
+
+		$this->assertArrayHasKey('pageToken', $response);
+		$pageToken = $response['pageToken'];
+		$this->assertNotNull($pageToken);
+
+		foreach ($response['items'] as &$product) {
+			$this->assertNotEmpty($product['id']);
+			$this->assertNotEmpty($product['spn']);
+			$this->assertArrayHasKey("mode", $product);
+			$this->assertNotEmpty($product['mode']);
+			$this->assertNotEmpty($product['created']);
+			$this->assertNotEmpty($product['updated']);
+		}
+	}
 }
 ?>
