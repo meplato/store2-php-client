@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2013-present Meplato GmbH.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.8
+ * @version 2.1.9
  * @license Copyright (c) 2015-2020 Meplato GmbH. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.8";
+	const VERSION = "2.1.9";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -187,7 +187,6 @@ class CreateService
 	 * - sageContract (string): SageContract represents the internal identifier at Meplato for the contract of this catalog.
 	 * - sageNumber (string): SageNumber represents the internal identifier at Meplato for the merchant of this catalog.
 	 * - selfLink (string): URL to this page.
-	 * - slug (string): Slug of the catalog.
 	 * - state (string): State describes the current state of the catalog, e.g. idle.
 	 * - supportsOciBackgroundsearch (boolean): SupportsOciBackgroundsearch indicates whether a catalog supports the OCI BACKGROUNDSEARCH transaction.
 	 * - supportsOciDetail (boolean): SupportsOciDetail indicates whether a catalog supports the OCI DETAIL transaction.
@@ -311,7 +310,6 @@ class GetService
 	 * - sageContract (string): SageContract represents the internal identifier at Meplato for the contract of this catalog.
 	 * - sageNumber (string): SageNumber represents the internal identifier at Meplato for the merchant of this catalog.
 	 * - selfLink (string): URL to this page.
-	 * - slug (string): Slug of the catalog.
 	 * - state (string): State describes the current state of the catalog, e.g. idle.
 	 * - supportsOciBackgroundsearch (boolean): SupportsOciBackgroundsearch indicates whether a catalog supports the OCI BACKGROUNDSEARCH transaction.
 	 * - supportsOciDetail (boolean): SupportsOciDetail indicates whether a catalog supports the OCI DETAIL transaction.
