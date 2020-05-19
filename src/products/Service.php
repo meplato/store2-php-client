@@ -18,7 +18,7 @@ use Meplato\Store2;
  *
  * @copyright 2013-present Meplato GmbH.
  * @author Meplato API Team <support@meplato.com>
- * @version 2.1.7
+ * @version 2.1.8
  * @license Copyright (c) 2015-2020 Meplato GmbH. All rights reserved.
  * @link https://developer.meplato.com/store2/#terms Terms of Service
  * @link https://developer.meplato.com/store2/ External documentation
@@ -28,7 +28,7 @@ class Service
 	/** @@var string API title */
 	const TITLE = "Meplato Store API";
 	/** @@var string API version */
-	const VERSION = "2.1.7";
+	const VERSION = "2.1.8";
 	/** @@var string Base URL of the service, including the path */
 	const BASE_URL = "https://store.meplato.com/api/v2";
 	/** @@var string User Agent string that will be sent to the server */
@@ -470,6 +470,7 @@ class GetService
 	 * - matgroup (string): Matgroup is the material group of the product on the buy-side.
 	 * - meplatoPrice (float64): MeplatoPrice is the Meplato price of the product.
 	 * - merchantId (int64): ID of the merchant.
+	 * - mode (string): Mode is only used for differential downloads and is the type of change of a product (CREATED, UPDATED, DELETED).
 	 * - mpn (string): MPN is the manufacturer part number.
 	 * - multiSupplierId (string): MultiSupplierID represents an optional field for the unique identifier of a supplier in a multi-supplier catalog.
 	 * - multiSupplierName (string): MultiSupplierName represents an optional field for the name of the supplier in a multi-supplier catalog.
@@ -699,6 +700,22 @@ class ScrollService
 	}
 
 	/**
+	 * Mode can be used in combination with version to specify if the result should
+	 * include all products for the specific version of the catalog (full), or just
+	 * the products that changed from the previous version (diff). If the mode is
+	 * "diff", the type of change to the product can be found in the attribute
+	 * "mode" and has the following values: "Created", "Updated", "Deleted". 
+	 *
+	 * @param $mode (string)
+	 * @return $this so that the function is chainable
+	 */
+	function mode($mode)
+	{
+		$this->opt["mode"] = $mode;
+		return $this;
+	}
+
+	/**
 	 * PageToken must be passed in the 2nd and all consective requests to get the
 	 * next page of results. You do not need to pass the page token manually. You
 	 * should just follow the nextUrl link in the metadata to get the next slice of
@@ -730,6 +747,18 @@ class ScrollService
 	}
 
 	/**
+	 * Version of the catalog to be retrieved
+	 *
+	 * @param $version (int64)
+	 * @return $this so that the function is chainable
+	 */
+	function version($version)
+	{
+		$this->opt["version"] = $version;
+		return $this;
+	}
+
+	/**
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
@@ -749,10 +778,16 @@ class ScrollService
 		// Parameters (in template and query string)
 		$params = [];
 		$params["area"] = $this->area;
+		if (array_key_exists("mode", $this->opt)) {
+			$params["mode"] = $this->opt["mode"];
+		}
 		if (array_key_exists("pageToken", $this->opt)) {
 			$params["pageToken"] = $this->opt["pageToken"];
 		}
 		$params["pin"] = $this->pin;
+		if (array_key_exists("version", $this->opt)) {
+			$params["version"] = $this->opt["version"];
+		}
 
 		// HTTP Headers
 		$headers = [
@@ -768,7 +803,7 @@ class ScrollService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/scroll{?pageToken}";
+		$urlTemplate = $this->service->getBaseURL() . "/catalogs/{pin}/{area}/products/scroll{?pageToken,mode,version}";
 
 		$body = NULL;
 
