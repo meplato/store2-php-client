@@ -40,6 +40,7 @@ class CreateTest extends BaseTest
 			'currency' => 'EUR',
 			'language' => 'de',
 			'target' => 'mall',
+			'type' => 'CC',
 			'sageNumber' => '',
 			'sageContract' => ''
 		];
@@ -49,6 +50,7 @@ class CreateTest extends BaseTest
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#catalog', $response['kind']);
 		$this->assertEquals('48F31F33AD', $response['pin']);
+		$this->assertEquals('CC', $response['type']);
 		$this->assertEquals(81, $response['id']);
 	}
 }

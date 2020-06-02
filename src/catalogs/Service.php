@@ -196,7 +196,7 @@ class CreateService
 	 * - supportsOciSourcing (boolean): SupportsOciSourcing indicates whether a catalog supports the OCI SOURCING transaction.
 	 * - supportsOciValidate (boolean): SupportsOciValidate indicates whether a catalog supports the OCI VALIDATE transaction.
 	 * - target (string): Target represents the target system which can be either an empty string, "catscout" or "mall".
-	 * - type (string): Type of catalog, e.g. corporate or basic.
+	 * - type (string): Type represents a catalog type which can be either "CC" 1:1 Corporate or "MB" Meplato Business 1 Creditor.
 	 * - updated (array): Updated is the last modification date and time of the catalog.
 	 * - validFrom (array): ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
 	 * - validUntil (array): ValidUntil is the date the catalog expires (YYYY-MM-DD).
@@ -319,7 +319,7 @@ class GetService
 	 * - supportsOciSourcing (boolean): SupportsOciSourcing indicates whether a catalog supports the OCI SOURCING transaction.
 	 * - supportsOciValidate (boolean): SupportsOciValidate indicates whether a catalog supports the OCI VALIDATE transaction.
 	 * - target (string): Target represents the target system which can be either an empty string, "catscout" or "mall".
-	 * - type (string): Type of catalog, e.g. corporate or basic.
+	 * - type (string): Type represents a catalog type which can be either "CC" 1:1 Corporate or "MB" Meplato Business 1 Creditor.
 	 * - updated (array): Updated is the last modification date and time of the catalog.
 	 * - validFrom (array): ValidFrom is the date the catalog becomes effective (YYYY-MM-DD).
 	 * - validUntil (array): ValidUntil is the date the catalog expires (YYYY-MM-DD).
