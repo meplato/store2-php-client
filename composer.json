@@ -12,6 +12,9 @@
             "homepage": "https://github.com/meplato/store2-php-client"
         }
     ],
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
     "require": {
         "php": "~7.1",
         "guzzlehttp/guzzle": "~5.0"
