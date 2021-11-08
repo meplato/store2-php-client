@@ -402,7 +402,7 @@ class GetService
 	 * - contractItem (string): ContractItem represents line number in the contract to be used when purchasing this product. See also Contract.
 	 * - conversionDenumerator (array): ConversionDenumerator is the denumerator for calculating price quantities.
 	 * - conversionNumerator (array): ConversionNumerator is the numerator for calculating price quantities.
-	 * - country (string): Country represents the ISO code of the country of origin, i.e. the country where the product has been created/produced, e.g. DE. If unspecified, the field is initialized with the catalog's country field. 
+	 * - country (string): Country/Region represents the ISO code of the country/region of origin, i.e. the country/region where the product has been created/produced, e.g. DE. If unspecified, the field is initialized with the catalog's country/region field. 
 	 * - created (array): Created is the creation date and time of the product.
 	 * - cu (string): ContentUnit is the content unit of the product, a 3-character ISO code (usually project-specific).
 	 * - cuPerOu (float64): CuPerOu describes the number of content units per order unit, e.g. the 12 in '1 case contains 12 bottles'.
@@ -434,6 +434,26 @@ class GetService
 	 * - customField28 (string): CustomField28 represents the 28th customer-specific field.
 	 * - customField29 (string): CustomField29 represents the 29th customer-specific field.
 	 * - customField30 (string): CustomField30 represents the 30th customer-specific field.
+	 * - customField31 (string): CustomField31 represents the 31st customer-specific field.
+	 * - customField32 (string): CustomField32 represents the 32nd customer-specific field.
+	 * - customField33 (string): CustomField33 represents the 33rd customer-specific field.
+	 * - customField34 (string): CustomField34 represents the 34th customer-specific field.
+	 * - customField35 (string): CustomField35 represents the 35th customer-specific field.
+	 * - customField36 (string): CustomField36 represents the 36th customer-specific field.
+	 * - customField37 (string): CustomField37 represents the 37th customer-specific field.
+	 * - customField38 (string): CustomField38 represents the 38th customer-specific field.
+	 * - customField39 (string): CustomField39 represents the 39th customer-specific field.
+	 * - customField40 (string): CustomField40 represents the 40th customer-specific field.
+	 * - customField41 (string): CustomField41 represents the 41st customer-specific field.
+	 * - customField42 (string): CustomField42 represents the 42nd customer-specific field.
+	 * - customField43 (string): CustomField43 represents the 43rd customer-specific field.
+	 * - customField44 (string): CustomField44 represents the 44th customer-specific field.
+	 * - customField45 (string): CustomField45 represents the 45th customer-specific field.
+	 * - customField46 (string): CustomField46 represents the 46th customer-specific field.
+	 * - customField47 (string): CustomField47 represents the 47th customer-specific field.
+	 * - customField48 (string): CustomField48 represents the 48th customer-specific field.
+	 * - customField49 (string): CustomField49 represents the 49th customer-specific field.
+	 * - customField50 (string): CustomField50 represents the 50th customer-specific field.
 	 * - customField6 (string): CustomField6 represents the 6th customer-specific field.
 	 * - customField7 (string): CustomField7 represents the 7th customer-specific field.
 	 * - customField8 (string): CustomField8 represents the 8th customer-specific field.
