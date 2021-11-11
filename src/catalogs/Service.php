@@ -150,7 +150,7 @@ class CreateService
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
-	 * - country (string): Country is the ISO-3166 alpha-2 code for the country that the catalog is destined for (e.g. DE or US).
+	 * - country (string): Country/Region is the ISO-3166 alpha-2 code for the country/region that the catalog is destined for (e.g. DE or US).
 	 * - created (array): Created is the creation date and time of the catalog.
 	 * - currency (string): Currency is the ISO-4217 currency code that is used for all products in the catalog (e.g. EUR or USD).
 	 * - custFields (array): CustFields is an array of generic name/value pairs for customer-specific attributes.
@@ -273,7 +273,7 @@ class GetService
 	 * Execute the service call.
 	 *
 	 * The return values has the following properties:
-	 * - country (string): Country is the ISO-3166 alpha-2 code for the country that the catalog is destined for (e.g. DE or US).
+	 * - country (string): Country/Region is the ISO-3166 alpha-2 code for the country/region that the catalog is destined for (e.g. DE or US).
 	 * - created (array): Created is the creation date and time of the catalog.
 	 * - currency (string): Currency is the ISO-4217 currency code that is used for all products in the catalog (e.g. EUR or USD).
 	 * - custFields (array): CustFields is an array of generic name/value pairs for customer-specific attributes.
