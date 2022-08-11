@@ -394,6 +394,7 @@ class GetService
 	 * - blobs (array): Blobs specifies external data, e.g. images or datasheets.
 	 * - boostFactor (array): BoostFactor represents a positive or negative boost for the product.
 	 * - bpn (string): BPN is the buyer part number of the product.
+	 * - brand (string): Brand is the commercial brand name of the product (i.e. end-consumer recognizable brand name).
 	 * - catalogId (int64): ID of the catalog this products belongs to.
 	 * - catalogManaged (boolean): CatalogManaged is a flag that indicates whether this product is configurable (or catalog managed in OCI parlance).
 	 * - categories (array): Categories is a list of (supplier-specific) category names the product belongs to.
