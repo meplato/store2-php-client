@@ -15,7 +15,8 @@ use GuzzleHttp\Subscriber\Mock;
 use GuzzleHttp\Message\MessageFactory;
 use GuzzleHttp\Message\Response;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Ring\Client\MockHandler;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\Psr7\Message;
 
 /**
  * Base class for all tests.
@@ -78,13 +79,11 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 	 */
 	protected function mockResponseFromFile($file) {
 		$contents = file_get_contents(__DIR__ . '/mock/responses/' . $file);
-		$parser = new MessageFactory();
-		$response = $parser->fromMessage($contents); //$this->fromMessage($contents);
-		$mock = new MockHandler([
-			'status'  => $response->getStatusCode(),
-			'headers' => $response->getHeaders(),
-			'body'    => $response->getBody(),
-		]);
+
+		$parser = new Message();
+		$response = $parser->parseResponse($contents); //$this->fromMessage($contents);
+
+		$mock = new MockHandler([$response]);
 		$guzzleClient = new \GuzzleHttp\Client(['handler' => $mock]);
 		$this->httpClient->setClient($guzzleClient);
 	}
