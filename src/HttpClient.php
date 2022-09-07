@@ -62,8 +62,6 @@ class HttpClient implements HttpClientInterface
 	// https://github.com/guzzle/guzzle/blob/master/src/Utils.php#L93
 	$url = \GuzzleHttp\UriTemplate\UriTemplate::expand($urlTemplate, $params);
 
-  $url = "https://store.meplato.com/api/v2/catalogs?skip=0&take=0&sort=-created%2Cname";
-
 	$response = $this->client->request($method, $url, $options);
 	//$response = $this->client->send($request);
 	return new HttpResponse($response);
