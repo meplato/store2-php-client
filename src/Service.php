@@ -127,6 +127,7 @@ class MeService
 	 */
 	function execute()
 	{
+
 		// Parameters (in template and query string)
 		$params = [];
 

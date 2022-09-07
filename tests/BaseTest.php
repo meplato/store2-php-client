@@ -11,12 +11,9 @@
 // or implied. See the License for the specific language governing permissions and limitations under
 // the License.
 
-use GuzzleHttp\Subscriber\Mock;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Message;
+use GuzzleHttp\Psr7\Response;
 
 /**
  * Base class for all tests.
@@ -64,7 +61,9 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 	 *     $this->mockResponse(['status' => 500, 'headers' => [], 'body' => '']);
 	 */
 	protected function mockResponse($response) {
-		$mock = new MockHandler($response);
+		$response = new Response($response['status'],$response['headers'],$response['body']);
+
+		$mock = new MockHandler([$response]);
 		$guzzleClient = new \GuzzleHttp\Client(['handler' => $mock]);
 		$this->httpClient->setClient($guzzleClient);
 	}

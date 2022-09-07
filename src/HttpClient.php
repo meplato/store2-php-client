@@ -59,11 +59,10 @@ class HttpClient implements HttpClientInterface
 	];
 
 	// Guzzle has a uriTemplate method to make URL from template and params:
-	// https://github.com/guzzle/guzzle/blob/master/src/Utils.php#L93
+	// https://github.com/guzzle/uri-template
 	$url = \GuzzleHttp\UriTemplate\UriTemplate::expand($urlTemplate, $params);
 
 	$response = $this->client->request($method, $url, $options);
-	//$response = $this->client->send($request);
 	return new HttpResponse($response);
   }
 }
