@@ -31,7 +31,7 @@ class PurgeTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('catalogs.purge.success');
 		$response = $service->purge()->pin("DEADBEEF")->area("work")->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#catalogPurge', $response['kind']);
 	}

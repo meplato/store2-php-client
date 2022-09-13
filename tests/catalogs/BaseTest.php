@@ -29,11 +29,11 @@ abstract class BaseTest extends \Meplato\Store2\Tests\BaseTest
 		return $this->service;
 	}
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 	}
 }

@@ -11,16 +11,16 @@
 // or implied. See the License for the specific language governing permissions and limitations under
 // the License.
 
-use GuzzleHttp\Subscriber\Mock;
-use GuzzleHttp\Message\MessageFactory;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Ring\Client\MockHandler;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\Psr7\Message;
+use GuzzleHttp\Psr7\Response;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * Base class for all tests.
  */
-abstract class BaseTest extends \PHPUnit_Framework_TestCase
+abstract class BaseTest extends TestCase
 {
 	/** Meplato Store 2 HTTP client. */
 	private $httpClient;
@@ -63,7 +63,9 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 	 *     $this->mockResponse(['status' => 500, 'headers' => [], 'body' => '']);
 	 */
 	protected function mockResponse($response) {
-		$mock = new MockHandler($response);
+		$response = new Response($response['status'],$response['headers'],$response['body']);
+
+		$mock = new MockHandler([$response]);
 		$guzzleClient = new \GuzzleHttp\Client(['handler' => $mock]);
 		$this->httpClient->setClient($guzzleClient);
 	}
@@ -78,22 +80,20 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 	 */
 	protected function mockResponseFromFile($file) {
 		$contents = file_get_contents(__DIR__ . '/mock/responses/' . $file);
-		$parser = new MessageFactory();
-		$response = $parser->fromMessage($contents); //$this->fromMessage($contents);
-		$mock = new MockHandler([
-			'status'  => $response->getStatusCode(),
-			'headers' => $response->getHeaders(),
-			'body'    => $response->getBody(),
-		]);
+
+		$parser = new Message();
+		$response = $parser->parseResponse($contents); //$this->fromMessage($contents);
+
+		$mock = new MockHandler([$response]);
 		$guzzleClient = new \GuzzleHttp\Client(['handler' => $mock]);
 		$this->httpClient->setClient($guzzleClient);
 	}
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 	}
 }

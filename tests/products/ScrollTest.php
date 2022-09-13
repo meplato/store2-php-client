@@ -34,7 +34,7 @@ class ScrollTest extends BaseTest
 		// The first call might not necessarily return products.
 		// But it returns a page token which we'll use to get the next slice of products.
 		$response = $service->scroll()->pin('AD8CCDD5F9')->area('work')->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#products', $response['kind']);
 		$this->assertArrayHasKey('selfLink', $response);
@@ -61,13 +61,13 @@ class ScrollTest extends BaseTest
 		// Get second slice of products.
 		$this->mockResponseFromFile('products.scroll.success.2');
 		$response = $service->scroll()->pin('AD8CCDD5F9')->area('work')->pageToken($pageToken)->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('selfLink', $response);
 		$this->assertArrayHasKey('nextLink', $response);
 		$this->assertArrayHasKey('totalItems', $response);
 		$this->assertArrayHasKey('items', $response);
 		$items = $response['items'];
-		$this->assertInternalType('array', $items);
+		$this->assertIsArray($items);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class ScrollTest extends BaseTest
 		// The first call might not necessarily return products.
 		// But it returns a page token which we'll use to get the next slice of products.
 		$response = $service->scroll()->pin('AD8CCDD5F9')->area('work')->version(3)->mode("diff")->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#products', $response['kind']);
 		$this->assertArrayHasKey('selfLink', $response);

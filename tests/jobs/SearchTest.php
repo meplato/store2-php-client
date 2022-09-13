@@ -30,7 +30,7 @@ class SearchTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('jobs.search.success');
 		$response = $service->search()->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('selfLink', $response);
 		$this->assertArrayHasKey('totalItems', $response);
@@ -41,9 +41,6 @@ class SearchTest extends BaseTest
 	/**
 	 * Tests a searching for jobs when unauthorized.
 	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Unauthorized
-	 *
 	 * @group jobs
 	 * @group jobs.search
 	 */
@@ -51,6 +48,10 @@ class SearchTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('jobs.search.unauthorized');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Unauthorized");
+
 		$service->search()->execute();
 	}
 }

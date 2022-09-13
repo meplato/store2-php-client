@@ -30,7 +30,7 @@ class GetTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.get.success');
 		$response = $service->get()->pin('AD8CCDD5F9')->area('work')->spn('50763599')->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#product', $response['kind']);
 		$this->assertArrayHasKey('id', $response);
@@ -40,13 +40,13 @@ class GetTest extends BaseTest
 		$this->assertArrayHasKey('name', $response);
 
 		$this->assertArrayHasKey('custFields', $response);
-		$this->assertInternalType('array', $response['custFields']);
+		$this->assertIsArray($response['custFields']);
 		$this->assertCount(1, $response['custFields']);
 		$this->assertEquals('Steuersatz', $response['custFields'][0]['name']);
 		$this->assertEquals('0.19', $response['custFields'][0]['value']);
 
 		$this->assertArrayHasKey('blobs', $response);
-		$this->assertInternalType('array', $response['blobs']);
+		$this->assertIsArray($response['blobs']);
 		$this->assertCount(1, $response['blobs']);
 		$this->assertEquals('normal', $response['blobs'][0]['kind']);
 		$this->assertEquals('50763599.jpg', $response['blobs'][0]['source']);
@@ -57,9 +57,6 @@ class GetTest extends BaseTest
 	/**
 	 * Test what happens when a product is not found.
 	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Product not found
-	 *
 	 * @group products
 	 * @group products.get
 	 */
@@ -67,15 +64,16 @@ class GetTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.get.not_found');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Product not found");
+
 		$response = $service->get()->pin('AD8CCDD5F9')->area('work')->spn('no-such-product')->execute();
 		$this->assertNull($response);
 	}
 
 	/**
 	 * Test what happens when the user is not authenticated.
-	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Unauthorized
 	 *
 	 * @group products
 	 * @group products.get
@@ -84,6 +82,10 @@ class GetTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.get.unauthorized');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Unauthorized");
+
 		$service->get()->pin("AD8CCDD5F9")->area('work')->spn('50763599')->execute();
 	}
 }

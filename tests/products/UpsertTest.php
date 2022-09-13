@@ -36,7 +36,7 @@ class UpsertTest extends BaseTest
 		// Upsert product, i.e. either create or update.
 		$this->mockResponseFromFile('products.upsert.success');
 		$response = $service->upsert()->pin('AD8CCDD5F9')->area('work')->product($product)->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#productsUpsertResponse', $response['kind']);
 		$this->assertArrayHasKey('link', $response);

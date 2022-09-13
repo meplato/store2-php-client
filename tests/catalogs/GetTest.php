@@ -30,7 +30,7 @@ class GetTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('catalogs.get.success');
 		$response = $service->get()->pin("DEADBEEF")->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('selfLink', $response);
 		$this->assertArrayHasKey('id', $response);
@@ -40,9 +40,6 @@ class GetTest extends BaseTest
 	/**
 	 * Tests call to a catalog that does not exist.
 	 *
-     * @expectedException        Meplato\Store2\ServiceException
-     * @expectedExceptionMessage Catalog not found
-     *
 	 * @group catalogs
 	 * @group catalogs.get
 	 */
@@ -50,6 +47,10 @@ class GetTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('catalogs.get.not_found');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Catalog not found");
+
 		$response = $service->get()->pin("DEADBEEF")->execute();
 		$this->assertNull($response);
 	}

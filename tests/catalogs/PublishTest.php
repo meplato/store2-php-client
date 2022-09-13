@@ -30,7 +30,7 @@ class PublishTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('catalogs.publish.success');
 		$response = $service->publish()->pin("DEADBEEF")->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('selfLink', $response);
 		$this->assertArrayHasKey('statusLink', $response);
@@ -48,7 +48,7 @@ class PublishTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('catalogs.publish.busy');
 		$response = $service->publishStatus()->pin("DEADBEEF")->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('selfLink', $response);
 		$this->assertArrayHasKey('status', $response);
@@ -67,7 +67,7 @@ class PublishTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('catalogs.publish.done');
 		$response = $service->publishStatus()->pin("DEADBEEF")->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('selfLink', $response);
 		$this->assertArrayHasKey('status', $response);

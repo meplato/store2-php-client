@@ -1,4 +1,7 @@
 <?php namespace Meplato\Store2;
+
+use GuzzleHttp\Utils;
+
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -56,11 +59,10 @@ class HttpClient implements HttpClientInterface
 	];
 
 	// Guzzle has a uriTemplate method to make URL from template and params:
-	// https://github.com/guzzle/guzzle/blob/master/src/Utils.php#L93
-	$url = \GuzzleHttp\Utils::uriTemplate($urlTemplate, $params);
+	// https://github.com/guzzle/uri-template
+	$url = \GuzzleHttp\UriTemplate\UriTemplate::expand($urlTemplate, $params);
 
-	$request = $this->client->createRequest($method, $url, $options);
-	$response = $this->client->send($request);
+	$response = $this->client->request($method, $url, $options);
 	return new HttpResponse($response);
   }
 }
@@ -111,8 +113,8 @@ class HttpResponse implements HttpResponseInterface
   public function getBodyJSON()
   {
 	try {
-	  return $this->response->json();
-	} catch(Exception $e) {
+	  return Utils::jsonDecode($this->response->getBody()->getContents(),true);
+	} catch(\Exception $e) {
 	  return [];
 	}
   }

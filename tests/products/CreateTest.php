@@ -36,7 +36,7 @@ class CreateTest extends BaseTest
 		// Create product
 		$this->mockResponseFromFile('products.create.success');
 		$response = $service->create()->pin('AD8CCDD5F9')->area('work')->product($createProduct)->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('link', $response);
 
@@ -46,9 +46,6 @@ class CreateTest extends BaseTest
 
 	/**
 	 * Tests missing mandatory field.
-	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Bitte prüfen Sie Ihre Eingaben
 	 *
 	 * @group products
 	 * @group products.create
@@ -64,6 +61,10 @@ class CreateTest extends BaseTest
 
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.create.parameter_missing');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Bitte prüfen Sie Ihre Eingaben");
+
 		$response = $service->create()->pin('AD8CCDD5F9')->area('work')->product($createProduct)->execute();
 	}
 }

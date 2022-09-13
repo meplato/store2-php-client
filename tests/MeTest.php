@@ -32,7 +32,7 @@ class MeTest extends BaseTest
 		$this->mockResponseFromFile('me.success');
 		$response = $service->me()->execute();
 
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('selfLink', $response);
 		$this->assertArrayHasKey('catalogsLink', $response);
@@ -41,14 +41,14 @@ class MeTest extends BaseTest
 		$this->assertEquals('store#me', $response['kind']);
 
 		$merchant = $response['merchant'];
-		$this->assertInternalType('array', $merchant);
+		$this->assertIsArray($merchant);
 		$this->assertArrayHasKey('kind', $merchant);
 		$this->assertEquals('store#merchant', $merchant['kind']);
 		$this->assertArrayHasKey('id', $merchant);
 		$this->assertArrayHasKey('name', $merchant);
 
 		$user = $response['user'];
-		$this->assertInternalType('array', $user);
+		$this->assertIsArray($user);
 		$this->assertArrayHasKey('kind', $user);
 		$this->assertEquals('store#user', $user['kind']);
 		$this->assertArrayHasKey('id', $user);
@@ -59,9 +59,6 @@ class MeTest extends BaseTest
 	/**
 	 * Tests an unauthorized call to the Me service.
 	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Unauthorized
-	 *
 	 * @group root
 	 * @group me
 	 */
@@ -69,8 +66,9 @@ class MeTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('me.unauthorized');
-		//$this->mockResponse(['status' => 401, 'headers' => [], 'body' => '{"error":{"message":"Unauthorized"}}']);
-		//$this->setExpectedException('Meplato\Store2\ServiceException', 'Unauthorized');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Unauthorized");
 		$service->me()->execute();
 	}
 }
