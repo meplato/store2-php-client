@@ -15,10 +15,12 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Message;
 use GuzzleHttp\Psr7\Response;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Base class for all tests.
  */
-abstract class BaseTest extends \PHPUnit_Framework_TestCase
+abstract class BaseTest extends TestCase
 {
 	/** Meplato Store 2 HTTP client. */
 	private $httpClient;
@@ -87,11 +89,11 @@ abstract class BaseTest extends \PHPUnit_Framework_TestCase
 		$this->httpClient->setClient($guzzleClient);
 	}
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 	}
 }

@@ -29,6 +29,8 @@ class PingTest extends BaseTest
 	 */
 	public function testSuccess()
 	{
+		self::expectNotToPerformAssertions();
+
 		$service = $this->getService();
 		$this->mockResponseFromFile('ping.success');
 		$response = $service->me()->execute();
@@ -37,9 +39,6 @@ class PingTest extends BaseTest
 	/**
 	 * Checks when a ping call is not authorized.
 	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Service failed with status code 401
-	 *
 	 * @group root
 	 * @group ping
 	 */
@@ -47,15 +46,15 @@ class PingTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('ping.unauthorized');
-		//$this->setExpectedException('Meplato\Store2\ServiceException', 'Service failed with status code 401');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Service failed with status code 401");
+
 		$service->me()->execute();
 	}
 
 	/**
 	 * Checks when ping returns with an internal server error.
-	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Service failed with status code 500
 	 *
 	 * @group root
 	 * @group ping
@@ -64,7 +63,9 @@ class PingTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponse(['status' => 500, 'headers' => [], 'body' => '']);
-		//$this->setExpectedException('Meplato\Store2\ServiceException', 'Service failed with status code 500');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Service failed with status code 500");
 		$service->me()->execute();
 	}
 }

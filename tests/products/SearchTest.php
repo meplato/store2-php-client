@@ -30,7 +30,7 @@ class SearchTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.search.success');
 		$response = $service->search()->pin("AD8CCDD5F9")->area('work')->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertArrayHasKey('selfLink', $response);
 		$this->assertArrayHasKey('totalItems', $response);
@@ -41,9 +41,6 @@ class SearchTest extends BaseTest
 	/**
 	 * Tests what happens when user is not authenticated.
 	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Unauthorized
-	 *
 	 * @group products
 	 * @group products.search
 	 */
@@ -51,6 +48,10 @@ class SearchTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.search.unauthorized');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Unauthorized");
+
 		$service->search()->pin('AD8CCDD5F9')->area('work')->execute();
 	}
 }

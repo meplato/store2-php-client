@@ -44,9 +44,9 @@ class CreateTest extends BaseTest
 			'sageNumber' => '',
 			'sageContract' => ''
 		];
-	
+
 		$response = $service->create()->catalog($createCatalog)->execute();
-		$this->assertInternalType('array', $response);
+		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#catalog', $response['kind']);
 		$this->assertEquals('48F31F33AD', $response['pin']);

@@ -27,6 +27,8 @@ class DeleteTest extends BaseTest
 	 */
 	public function testDelete()
 	{
+		self::expectNotToPerformAssertions();
+
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.delete.success');
 		$service->delete()->pin('AD8CCDD5F9')->area('work')->spn('50763599')->execute();
@@ -35,9 +37,6 @@ class DeleteTest extends BaseTest
 	/**
 	 * Test what happens when a product is not found.
 	 *
-	 * @expectedException        Meplato\Store2\ServiceException
-	 * @expectedExceptionMessage Product not found
-	 *
 	 * @group products
 	 * @group products.delete
 	 */
@@ -45,6 +44,10 @@ class DeleteTest extends BaseTest
 	{
 		$service = $this->getService();
 		$this->mockResponseFromFile('products.delete.not_found');
+
+		$this->expectException(\Meplato\Store2\ServiceException::class);
+		$this->expectExceptionMessage("Product not found");
+
 		$service->delete()->pin('AD8CCDD5F9')->area('work')->spn('no-such-product')->execute();
 	}
 }
