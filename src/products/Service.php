@@ -473,6 +473,7 @@ class GetService
 	 * - extSchemaType (string): ExtSchemaType is the EXT_SCHEMA_TYPE field of the SAP OCI specification.
 	 * - features (array): Features defines product features, i.e. additional properties of the product.
 	 * - glAccount (string): GLAccount represents the GL account number to use for this product.
+	 * - greenLogos (array): GreenLogos is an array of green logo names, which are hosted in the store, and used to mark products as green.
 	 * - gtin (string): GTIN is the global trade item number of the product (used to be EAN).
 	 * - hazmats (array): Hazmats classifies hazardous/dangerous goods.
 	 * - id (string): ID is a unique (internal) identifier of the product.
