@@ -191,7 +191,7 @@ class DeleteService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/api/v2/products/{spn}/availabilities{?region,zipCode}";
+		$urlTemplate = $this->service->getBaseURL() . "/products/{spn}/availabilities{?region,zipCode}";
 
 		$body = NULL;
 
@@ -297,7 +297,7 @@ class GetService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/api/v2/products/{spn}/availabilities{?region,zipCode}";
+		$urlTemplate = $this->service->getBaseURL() . "/products/{spn}/availabilities{?region,zipCode}";
 
 		$body = NULL;
 
@@ -387,7 +387,7 @@ class UpsertService
 			$headers["Authorization"] = "Basic {$credentials}";
 		}
 
-		$urlTemplate = $this->service->getBaseURL() . "/api/v2/products/{spn}/availabilities";
+		$urlTemplate = $this->service->getBaseURL() . "/products/{spn}/availabilities";
 
 		$body = json_encode($this->availability);
 
