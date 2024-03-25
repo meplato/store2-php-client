@@ -392,7 +392,7 @@ class UpsertService
 		$body = json_encode($this->availability);
 
 		// Execute request
-		$response = $this->service->getClient()->execute("post", $urlTemplate, $params, $headers, $body);
+		$response = $this->service->getClient()->execute("put", $urlTemplate, $params, $headers, $body);
 		$status = $response->getStatusCode();
 		if ($status >= 200 && $status <= 299) {
 			return $response->getBodyJSON();
