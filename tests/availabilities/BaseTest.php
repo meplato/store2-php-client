@@ -11,30 +11,30 @@
 // or implied. See the License for the specific language governing permissions and limitations under
 // the License.
 
-use Meplato\Store2\HttpClient;
-use Meplato\Store2\Availabilities\Service;
-
 /**
- * Tests deleting a product.
+ * Base test for the Availabilities service.
  */
-class DeleteTest extends BaseTest
+abstract class BaseTest extends \Meplato\Store2\Tests\BaseTest
 {
-	/**
-	 * Tests a successful call to delete availabilities.
-	 *
-	 * @group availabilities
-	 * @group availabilities.delete
-	 */
-	public function testDelete()
+	public function __construct()
 	{
+	parent::__construct();
+	}
 
-		$service = $this->getService();
-		$this->mockResponseFromFile('availabilities.delete.success');
-		$response = $service->delete()->spn('1234')->execute();
+	public function getService()
+	{
+		$client = $this->getHttpClient();
+		$this->service = new \Meplato\Store2\Availabilities\Service($client);
+		$this->service->setBaseURL("http://store2.go/api/v2");
+		return $this->service;
+	}
 
-		$this->assertIsArray($response);
-		$this->assertArrayHasKey('kind', $response);
-		$this->assertEquals('store#availabilities/deleteResponse', $response['kind']);
+	protected function setUp(): void
+	{
+	}
+
+	protected function tearDown(): void
+	{
 	}
 }
 ?>

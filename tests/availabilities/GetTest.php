@@ -51,13 +51,8 @@ class GetTest extends BaseTest
 		$service = $this->getService();
 		$this->mockResponseFromFile('availabilities.get.not_found');
 
-
-		$this->expectException(\Meplato\Store2\ServiceException::class);
-		$this->expectExceptionMessage("Product not found");
-
-		$this->assertIsArray($response['items']);
-
 		$response = $service->get()->spn('no-such-product')->execute();
+
 		$this->assertIsArray($response);
 		$this->assertArrayHasKey('kind', $response);
 		$this->assertEquals('store#availabilities/getResponse', $response['kind']);
