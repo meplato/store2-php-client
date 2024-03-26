@@ -15,7 +15,7 @@ use Meplato\Store2\HttpClient;
 use Meplato\Store2\Availabilities\Service;
 
 /**
- * Tests deleting a product.
+ * Tests deleting availabilities.
  */
 class DeleteTest extends BaseTest
 {
