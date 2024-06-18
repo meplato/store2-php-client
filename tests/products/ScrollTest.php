@@ -17,7 +17,7 @@ use Meplato\Store2\Products\Service;
 /**
  * Tests scrolling through the products of a catalog.
  */
-class ScrollTest extends Base
+class ScrollTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful start of scrolling through the products of a catalog.

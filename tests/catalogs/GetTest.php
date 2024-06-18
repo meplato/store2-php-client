@@ -17,7 +17,7 @@ use Meplato\Store2\Catalogs\Service;
 /**
  * Tests retrieving a catalog.
  */
-class GetTest extends Base
+class GetTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to retrieve a catalog.
