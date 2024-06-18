@@ -17,7 +17,7 @@ use Meplato\Store2\Jobs\Service;
 /**
  * Tests retrieving a job.
  */
-class GetTest extends BaseTest
+class GetTest extends Base
 {
 	/**
 	 * Tests a successful call to retrieve a job.

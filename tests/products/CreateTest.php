@@ -14,7 +14,7 @@
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
 
-class CreateTest extends BaseTest
+class CreateTest extends Base
 {
 	/**
 	 * Tests a successful call to create a product.

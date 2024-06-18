@@ -13,13 +13,13 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Service;
-use Meplato\Store2\Tests\BaseTest;
+use Meplato\Store2\Tests\Base;
 use GuzzleHttp\Message\Response;
 
 /**
  * Tests the Ping service.
  */
-class PingTest extends BaseTest
+class PingTest extends Base
 {
 	/**
 	 * Checks when a ping is successful.
