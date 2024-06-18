@@ -29,7 +29,6 @@ abstract class BaseTest extends TestCase
 
 	public function __construct($name = null, array $data = [], $dataName = '') {
 		parent::__construct($name, $data, $dataName);
-		// Some constructor code.
 	}
 
 	/**
