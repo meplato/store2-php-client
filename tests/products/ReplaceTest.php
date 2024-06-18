@@ -17,7 +17,7 @@ use Meplato\Store2\Products\Service;
 /**
  * Tests replacing a product.
  */
-class ReplaceTest extends BaseTest
+class ReplaceTest extends Base
 {
 	/**
 	 * Tests a successful call to replace a product.

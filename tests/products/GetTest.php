@@ -17,7 +17,7 @@ use Meplato\Store2\Products\Service;
 /**
  * Tests retrieving a product.
  */
-class GetTest extends BaseTest
+class GetTest extends Base
 {
 	/**
 	 * Tests a successful call to retrieve a product.

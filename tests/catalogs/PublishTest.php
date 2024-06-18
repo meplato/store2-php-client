@@ -17,7 +17,7 @@ use Meplato\Store2\Catalogs\Service;
 /**
  * Tests publishing a catalog.
  */
-class PublishTest extends BaseTest
+class PublishTest extends Base
 {
 	/**
 	 * Tests a successful publishing a catalog.

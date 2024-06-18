@@ -17,7 +17,7 @@ use Meplato\Store2\Products\Service;
 /**
  * Tests deleting a product.
  */
-class DeleteTest extends BaseTest
+class DeleteTest extends Base
 {
 	/**
 	 * Tests a successful call to delete a product.

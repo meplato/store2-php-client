@@ -17,7 +17,7 @@ use Meplato\Store2\Products\Service;
 /**
  * Tests searching for products.
  */
-class SearchTest extends BaseTest
+class SearchTest extends Base
 {
 	/**
 	 * Tests a successful call to search for products.

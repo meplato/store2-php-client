@@ -17,7 +17,7 @@ use Meplato\Store2\Catalogs\Service;
 /**
  * Tests the Catalogs service.
  */
-class ServiceTest extends BaseTest
+class ServiceTest extends Base
 {
 	/**
 	 * Tests a the Catalogs service.
