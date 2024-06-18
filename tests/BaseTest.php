@@ -27,9 +27,9 @@ abstract class BaseTest extends TestCase
 	/** Guzzle HTTP client, used by $httpClient internally. */
 	private $guzzleClient;
 
-	public function __construct()
-	{
-		parent::__construct();
+	public function __construct($name = null, array $data = [], $dataName = '') {
+		parent::__construct($name, $data, $dataName);
+		// Some constructor code.
 	}
 
 	/**

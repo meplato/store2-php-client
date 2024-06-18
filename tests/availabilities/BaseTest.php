@@ -16,9 +16,9 @@
  */
 abstract class BaseTest extends \Meplato\Store2\Tests\BaseTest
 {
-	public function __construct()
-	{
-	parent::__construct();
+	public function __construct($name = null, array $data = [], $dataName = '') {
+		parent::__construct($name, $data, $dataName);
+		// Some constructor code.
 	}
 
 	public function getService()
