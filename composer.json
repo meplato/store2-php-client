@@ -29,7 +29,8 @@
             "Meplato\\Store2\\": "src/",
             "Meplato\\Store2\\Catalogs\\": "src/catalogs/",
             "Meplato\\Store2\\Products\\": "src/products/",
-            "Meplato\\Store2\\Jobs\\": "src/jobs/"
+            "Meplato\\Store2\\Jobs\\": "src/jobs/",
+            "Meplato\\Store2\\Availabilities\\": "src/availabilities/"
         }
     },
     "autoload-dev": {
@@ -37,7 +38,8 @@
             "Meplato\\Store2\\Tests\\": "tests/",
             "Meplato\\Store2\\Tests\\Catalogs\\": "tests/catalogs/",
             "Meplato\\Store2\\Tests\\Products\\": "tests/products/",
-            "Meplato\\Store2\\Tests\\Jobs\\": "tests/jobs/"
+            "Meplato\\Store2\\Tests\\Jobs\\": "tests/jobs/",
+            "Meplato\\Store2\\Tests\\Availabilities\\": "tests/availabilities/"
         }
     }
 }
