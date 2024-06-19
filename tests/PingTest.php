@@ -15,6 +15,7 @@ use Meplato\Store2\HttpClient;
 use Meplato\Store2\Service;
 use Meplato\Store2\Tests\BaseTestCase;
 use GuzzleHttp\Message\Response;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests the Ping service.
@@ -23,10 +24,9 @@ class PingTest extends BaseTestCase
 {
 	/**
 	 * Checks when a ping is successful.
-	 *
-	 * @group root
-	 * @group ping
 	 */
+	#[Group('root')]
+	#[Group('ping')]
 	public function testSuccess()
 	{
 		self::expectNotToPerformAssertions();
@@ -38,10 +38,9 @@ class PingTest extends BaseTestCase
 
 	/**
 	 * Checks when a ping call is not authorized.
-	 *
-	 * @group root
-	 * @group ping
 	 */
+	#[Group('root')]
+	#[Group('ping')]
 	public function testUnauthorized()
 	{
 		$service = $this->getService();
@@ -55,10 +54,9 @@ class PingTest extends BaseTestCase
 
 	/**
 	 * Checks when ping returns with an internal server error.
-	 *
-	 * @group root
-	 * @group ping
 	 */
+	#[Group('root')]
+	#[Group('ping')]
 	public function testInternalError()
 	{
 		$service = $this->getService();

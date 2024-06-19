@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests retrieving a product.
@@ -21,10 +22,9 @@ class GetTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to retrieve a product.
-	 *
-	 * @group products
-	 * @group products.get
 	 */
+	#[Group('products')]
+	#[Group('products.get')]
 	public function testGet()
 	{
 		$service = $this->getService();
@@ -56,10 +56,9 @@ class GetTest extends BaseTestCase
 
 	/**
 	 * Test what happens when a product is not found.
-	 *
-	 * @group products
-	 * @group products.get
 	 */
+	#[Group('products')]
+	#[Group('products.get')]
 	public function testGetNotFound()
 	{
 		$service = $this->getService();
@@ -74,10 +73,9 @@ class GetTest extends BaseTestCase
 
 	/**
 	 * Test what happens when the user is not authenticated.
-	 *
-	 * @group products
-	 * @group products.get
 	 */
+	#[Group('products')]
+	#[Group('products.get')]
 	public function testGetUnauthorized()
 	{
 		$service = $this->getService();

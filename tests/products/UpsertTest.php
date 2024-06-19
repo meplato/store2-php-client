@@ -13,15 +13,15 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 class UpsertTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to upsert a product.
-	 *
-	 * @group products
-	 * @group products.upsert
 	 */
+	#[Group('products')]
+	#[Group('products.upsert')]
 	public function testUpsert()
 	{
 		$product = [

@@ -13,20 +13,19 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Catalogs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests publishing a catalog.
  */
 class PublishTest extends BaseTestCase
 {
-	/**
-	 * Tests a successful publishing a catalog.
-	 *
-	 * @group catalogs
-	 * @group catalogs.publish
-	 */
+
+	#[Group('catalogs')]
+	#[Group('catalogs.publish')]
 	public function testSuccess()
 	{
+		print($i);
 		$service = $this->getService();
 		$this->mockResponseFromFile('catalogs.publish.success');
 		$response = $service->publish()->pin("DEADBEEF")->execute();
@@ -39,10 +38,9 @@ class PublishTest extends BaseTestCase
 
 	/**
 	 * Tests polling for publish status.
-	 *
-	 * @group catalogs
-	 * @group catalogs.publish
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.publish')]
 	public function testStatusBusy()
 	{
 		$service = $this->getService();
@@ -58,10 +56,9 @@ class PublishTest extends BaseTestCase
 
 	/**
 	 * Tests polling for completed publish status.
-	 *
-	 * @group catalogs
-	 * @group catalogs.publish
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.publish')]
 	public function testStatusDone()
 	{
 		$service = $this->getService();

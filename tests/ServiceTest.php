@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests the entry point for Me and Ping service.
@@ -21,10 +22,9 @@ class ServiceTest extends BaseTestCase
 {
 	/**
 	 * Tests a generic call into the service.
-	 *
-	 * @group root
-	 * @group service
 	 */
+	#[Group('root')]
+	#[Group('service')]
   public function testService()
   {
 	$client = new HttpClient();

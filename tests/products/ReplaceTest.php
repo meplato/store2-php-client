@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests replacing a product.
@@ -21,10 +22,9 @@ class ReplaceTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to replace a product.
-	 *
-	 * @group products
-	 * @group products.replace
 	 */
+	#[Group('products')]
+	#[Group('products.replace')]
 	public function testReplace()
 	{
 		// Replace replaces all fields of a product, unlike Update.

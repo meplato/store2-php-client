@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Availabilities\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests retrieving of availabilities.
@@ -21,10 +22,9 @@ class GetTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to retrieve availabilities.
-	 *
-	 * @group availabilities
-	 * @group availabilities.get
 	 */
+	#[Group('availabilities')]
+	#[Group('availabilities.get')]
 	public function testGet()
 	{
 		$service = $this->getService();
@@ -42,10 +42,9 @@ class GetTest extends BaseTestCase
 
 	/**
 	 * Test what happens when availabilities are not found.
-	 *
-	 * @group availabilities
-	 * @group availabilities.get
 	 */
+	#[Group('availabilities')]
+	#[Group('availabilities.get')]
 	public function testGetNotFound()
 	{
 		$service = $this->getService();

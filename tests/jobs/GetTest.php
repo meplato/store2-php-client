@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Jobs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests retrieving a job.
@@ -21,10 +22,9 @@ class GetTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to retrieve a job.
-	 *
-	 * @group jobs
-	 * @group jobs.get
 	 */
+	#[Group('jobs')]
+	#[Group('jobs.get')]
 	public function testSuccess()
 	{
 		$service = $this->getService();
@@ -39,10 +39,9 @@ class GetTest extends BaseTestCase
 
 	/**
 	 * Tests call to a job that does not exist.
-     *
-	 * @group jobs
-	 * @group jobs.get
 	 */
+	#[Group('jobs')]
+	#[Group('jobs.get')]
 	public function testNotFound()
 	{
 		$service = $this->getService();

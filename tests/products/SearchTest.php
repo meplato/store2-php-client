@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests searching for products.
@@ -21,10 +22,9 @@ class SearchTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to search for products.
-	 *
-	 * @group products
-	 * @group products.search
 	 */
+	#[Group('products')]
+	#[Group('products.search')]
 	public function testSearch()
 	{
 		$service = $this->getService();
@@ -40,10 +40,9 @@ class SearchTest extends BaseTestCase
 
 	/**
 	 * Tests what happens when user is not authenticated.
-	 *
-	 * @group products
-	 * @group products.search
 	 */
+	#[Group('products')]
+	#[Group('products.search')]
 	public function testSearchUnauthorized()
 	{
 		$service = $this->getService();

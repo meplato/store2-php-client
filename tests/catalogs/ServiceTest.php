@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Catalogs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests the Catalogs service.
@@ -21,11 +22,10 @@ class ServiceTest extends BaseTestCase
 {
 	/**
 	 * Tests a the Catalogs service.
-	 *
-	 * @group catalogs
-	 * @group catalogs.service
-	 * @group service
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.service')]
+	#[Group('service')]
 	public function testService()
 	{
 		$client = new HttpClient();

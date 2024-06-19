@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Jobs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests searching for/listing jobs.
@@ -21,10 +22,9 @@ class SearchTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful searching for jobs.
-	 *
-	 * @group jobs
-	 * @group jobs.search
 	 */
+	#[Group('jobs')]
+	#[Group('jobs.search')]
 	public function testSearch()
 	{
 		$service = $this->getService();
@@ -40,10 +40,9 @@ class SearchTest extends BaseTestCase
 
 	/**
 	 * Tests a searching for jobs when unauthorized.
-	 *
-	 * @group jobs
-	 * @group jobs.search
 	 */
+	#[Group('jobs')]
+	#[Group('jobs.search')]
 	public function testSearchUnauthorized()
 	{
 		$service = $this->getService();

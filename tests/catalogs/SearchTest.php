@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Catalogs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests searching for/listing catalogs.
@@ -21,10 +22,9 @@ class SearchTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful searching for catalogs.
-	 *
-	 * @group catalogs
-	 * @group catalogs.search
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.search')]
 	public function testSearch()
 	{
 		$service = $this->getService();
@@ -40,10 +40,9 @@ class SearchTest extends BaseTestCase
 
 	/**
 	 * Tests a searching for catalogs when unauthorized.
-	 *
-	 * @group catalogs
-	 * @group catalogs.search
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.search')]
 	public function testSearchUnauthorized()
 	{
 		$service = $this->getService();

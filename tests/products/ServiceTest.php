@@ -13,12 +13,16 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests the core Products service.
  */
 class ServiceTest extends BaseTestCase
 {
+	#[Group('products')]
+	#[Group('products.service')]
+	#[Group('service')]
 	public function testService()
 	{
 		$client = new HttpClient();

@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Catalogs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests creating a catalog.
@@ -21,10 +22,9 @@ class CreateTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to create a catalog
-	 *
-	 * @group catalogs
-	 * @group catalogs.create
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.create')]
 	public function testSuccess()
 	{
 		$service = $this->getService();

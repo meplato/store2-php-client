@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests deleting a product.
@@ -21,10 +22,9 @@ class DeleteTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to delete a product.
-	 *
-	 * @group products
-	 * @group products.delete
 	 */
+	#[Group('products')]
+	#[Group('products.delete')]
 	public function testDelete()
 	{
 		self::expectNotToPerformAssertions();
@@ -36,10 +36,9 @@ class DeleteTest extends BaseTestCase
 
 	/**
 	 * Test what happens when a product is not found.
-	 *
-	 * @group products
-	 * @group products.delete
 	 */
+	#[Group('products')]
+	#[Group('products.delete')]
 	public function testDeleteNotFound()
 	{
 		$service = $this->getService();

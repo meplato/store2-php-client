@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Catalogs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests purging a catalog.
@@ -22,10 +23,9 @@ class PurgeTest extends BaseTestCase
 	/**
 	 * Tests a successful call to purge the work area of a catalog.
 	 * This API removes all products from an area.
-	 *
-	 * @group catalogs
-	 * @group catalogs.purge
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.purge')]
 	public function testSuccess()
 	{
 		$service = $this->getService();

@@ -13,15 +13,15 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Availabilities\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 class UpsertTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to upsert of availabilities.
-	 *
-	 * @group availabilities
-	 * @group availabilities.upsert
 	 */
+	#[Group('availabilities')]
+	#[Group('availabilities.upsert')]
 	public function testUpsert()
 	{
 		$availability = [

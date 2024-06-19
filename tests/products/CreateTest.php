@@ -13,15 +13,15 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 class CreateTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to create a product.
-	 *
-	 * @group products
-	 * @group products.create
 	 */
+	#[Group('products')]
+	#[Group('products.create')]
 	public function testCreate()
 	{
 		$createProduct = [
@@ -46,10 +46,9 @@ class CreateTest extends BaseTestCase
 
 	/**
 	 * Tests missing mandatory field.
-	 *
-	 * @group products
-	 * @group products.create
 	 */
+	#[Group('products')]
+	#[Group('products.create')]
 	public function testCreateWithMissingRequiredFields()
 	{
 		$createProduct = [
