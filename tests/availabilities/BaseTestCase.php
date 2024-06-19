@@ -16,6 +16,8 @@
  */
 class BaseTestCase extends \Meplato\Store2\Tests\BaseTestCase
 {
+	private $service;
+
 	public function __construct($name = null, array $data = [], $dataName = '') {
 		parent::__construct($name, $data, $dataName);
 	}

@@ -25,7 +25,6 @@ class PublishTest extends BaseTestCase
 	#[Group('catalogs.publish')]
 	public function testSuccess()
 	{
-		print($i);
 		$service = $this->getService();
 		$this->mockResponseFromFile('catalogs.publish.success');
 		$response = $service->publish()->pin("DEADBEEF")->execute();
