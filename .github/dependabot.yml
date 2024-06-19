@@ -9,10 +9,12 @@ updates:
     open-pull-requests-limit: 5
     reviewers: 
      - XoseRamon
+     - m-timmermann
+     - rwenz3l
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "monthly"
     reviewers:
-      - "XoseRamon"
-      - "rwenzel"
+      - XoseRamon
+      - rwenz3l
