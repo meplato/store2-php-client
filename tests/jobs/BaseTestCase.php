@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Jobs\Tests;
+<?php namespace Meplato\Store2\Tests\Jobs;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
