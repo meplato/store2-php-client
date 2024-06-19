@@ -14,7 +14,7 @@
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Availabilities\Service;
 
-class UpsertTest extends Base
+class UpsertTest extends BaseTest
 {
 	/**
 	 * Tests a successful call to upsert of availabilities.

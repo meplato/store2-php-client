@@ -17,7 +17,7 @@ use Meplato\Store2\Catalogs\Service;
 /**
  * Tests creating a catalog.
  */
-class CreateTest extends Base
+class CreateTest extends BaseTest
 {
 	/**
 	 * Tests a successful call to create a catalog

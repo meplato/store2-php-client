@@ -22,7 +22,7 @@ use Meplato\Store2\Products\Service;
  * If you want to change all fields of a product, use Replace.
  *
  */
-class UpdateTest extends Base
+class UpdateTest extends BaseTest
 {
 	/**
 	 * Tests a successful call to update a product.

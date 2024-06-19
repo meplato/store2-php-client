@@ -17,7 +17,7 @@ use Meplato\Store2\Availabilities\Service;
 /**
  * Tests deleting availabilities.
  */
-class DeleteTest extends Base
+class DeleteTest extends BaseTest
 {
 	/**
 	 * Tests a successful call to delete availabilities.

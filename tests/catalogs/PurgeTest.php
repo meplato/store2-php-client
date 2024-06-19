@@ -17,7 +17,7 @@ use Meplato\Store2\Catalogs\Service;
 /**
  * Tests purging a catalog.
  */
-class PurgeTest extends Base
+class PurgeTest extends BaseTest
 {
 	/**
 	 * Tests a successful call to purge the work area of a catalog.

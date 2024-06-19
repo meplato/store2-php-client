@@ -17,7 +17,7 @@ use Meplato\Store2\Catalogs\Service;
 /**
  * Tests searching for/listing catalogs.
  */
-class SearchTest extends Base
+class SearchTest extends BaseTest
 {
 	/**
 	 * Tests a successful searching for catalogs.

@@ -17,7 +17,7 @@ use Meplato\Store2\Availabilities\Service;
 /**
  * Tests retrieving of availabilities.
  */
-class GetTest extends Base
+class GetTest extends BaseTest
 {
 	/**
 	 * Tests a successful call to retrieve availabilities.

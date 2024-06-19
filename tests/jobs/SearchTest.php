@@ -17,7 +17,7 @@ use Meplato\Store2\Jobs\Service;
 /**
  * Tests searching for/listing jobs.
  */
-class SearchTest extends Base
+class SearchTest extends BaseTest
 {
 	/**
 	 * Tests a successful searching for jobs.

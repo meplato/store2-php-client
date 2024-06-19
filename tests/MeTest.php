@@ -18,7 +18,7 @@ use GuzzleHttp\Message\Response;
 /**
  * Tests the Me service.
  */
-class MeTest extends Base
+class MeTest extends BaseTest
 {
 	/**
 	 * Tests a successful call to the Me service.

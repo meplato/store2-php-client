@@ -14,7 +14,7 @@
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
 
-class UpsertTest extends Base
+class UpsertTest extends BaseTest
 {
 	/**
 	 * Tests a successful call to upsert a product.
