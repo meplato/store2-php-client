@@ -17,7 +17,7 @@ use Meplato\Store2\Service;
 /**
  * Tests the entry point for Me and Ping service.
  */
-class ServiceTest extends BaseTestCase
+class ServiceTest extends Base
 {
 	/**
 	 * Tests a generic call into the service.

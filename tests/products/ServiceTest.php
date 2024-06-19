@@ -17,7 +17,7 @@ use Meplato\Store2\Products\Service;
 /**
  * Tests the core Products service.
  */
-class ServiceTest extends BaseTestCase
+class ServiceTest extends Base
 {
 	public function testService()
 	{

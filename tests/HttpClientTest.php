@@ -16,7 +16,7 @@ use Meplato\Store2\HttpClient;
 /**
  * Tests the Meplato Store 2 HTTP client.
  */
-class HttpClientTest extends BaseTestCase
+class HttpClientTest extends Base
 {
 	/**
 	 * Test if the HTTP client works, in general.

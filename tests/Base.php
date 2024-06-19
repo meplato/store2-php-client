@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Base class for all tests.
  */
-abstract class BaseTestCase extends TestCase
+abstract class Base extends TestCase
 {
 	/** Meplato Store 2 HTTP client. */
 	private $httpClient;
