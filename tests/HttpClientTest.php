@@ -27,7 +27,7 @@ class HttpClientTest extends BaseTestCase
 	public function testNewHttpClient()
 	{
 		$client = new HttpClient();
-		$resp = $client->execute("GET", "https://store3.meplato.com/");
+		$resp = $client->execute("GET", "https://store.meplato.com/");
 		$this->assertEquals(200, $resp->getStatusCode());
 	}
 }
