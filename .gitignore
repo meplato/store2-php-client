@@ -1,4 +1,5 @@
 phpunit.xml
+.phpunit.result.cache
 composer.phar
 # composer.lock
 composer-test.lock
@@ -8,4 +9,3 @@ artifacts/
 .idea
 .DS_Store
 /genapi.bash
-

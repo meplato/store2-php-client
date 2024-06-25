@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Products\Tests;
+<?php namespace Meplato\Store2\Tests\Products;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,18 +13,18 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests scrolling through the products of a catalog.
  */
-class ScrollTest extends BaseTest
+class ScrollTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful start of scrolling through the products of a catalog.
-	 *
-	 * @group products
-	 * @group products.scroll
 	 */
+	#[Group('products')]
+	#[Group('products.scroll')]
 	public function testScroll()
 	{
 		$service = $this->getService();
@@ -72,10 +72,9 @@ class ScrollTest extends BaseTest
 
 	/**
 	 * Tests a successful start of scrolling through a differential download of the products of a catalog.
-	 *
-	 * @group products
-	 * @group products.scroll
 	 */
+	#[Group('products')]
+	#[Group('products.scroll')]
 	public function testDifferentialScroll()
 	{
 		$service = $this->getService();

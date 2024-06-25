@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Availabilities\Tests;
+<?php namespace Meplato\Store2\Tests\Availabilities;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,18 +13,18 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Availabilities\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests deleting availabilities.
  */
-class DeleteTest extends BaseTest
+class DeleteTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to delete availabilities.
-	 *
-	 * @group availabilities
-	 * @group availabilities.delete
 	 */
+	#[Group('availabilities')]
+	#[Group('availabilities.delete')]
 	public function testDelete()
 	{
 

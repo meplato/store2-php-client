@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Catalogs\Tests;
+<?php namespace Meplato\Store2\Tests\Catalogs;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,18 +13,16 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Catalogs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests publishing a catalog.
  */
-class PublishTest extends BaseTest
+class PublishTest extends BaseTestCase
 {
-	/**
-	 * Tests a successful publishing a catalog.
-	 *
-	 * @group catalogs
-	 * @group catalogs.publish
-	 */
+
+	#[Group('catalogs')]
+	#[Group('catalogs.publish')]
 	public function testSuccess()
 	{
 		$service = $this->getService();
@@ -39,10 +37,9 @@ class PublishTest extends BaseTest
 
 	/**
 	 * Tests polling for publish status.
-	 *
-	 * @group catalogs
-	 * @group catalogs.publish
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.publish')]
 	public function testStatusBusy()
 	{
 		$service = $this->getService();
@@ -58,10 +55,9 @@ class PublishTest extends BaseTest
 
 	/**
 	 * Tests polling for completed publish status.
-	 *
-	 * @group catalogs
-	 * @group catalogs.publish
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.publish')]
 	public function testStatusDone()
 	{
 		$service = $this->getService();

@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Products\Tests;
+<?php namespace Meplato\Store2\Tests\Products;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,18 +13,18 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests deleting a product.
  */
-class DeleteTest extends BaseTest
+class DeleteTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to delete a product.
-	 *
-	 * @group products
-	 * @group products.delete
 	 */
+	#[Group('products')]
+	#[Group('products.delete')]
 	public function testDelete()
 	{
 		self::expectNotToPerformAssertions();
@@ -36,10 +36,9 @@ class DeleteTest extends BaseTest
 
 	/**
 	 * Test what happens when a product is not found.
-	 *
-	 * @group products
-	 * @group products.delete
 	 */
+	#[Group('products')]
+	#[Group('products.delete')]
 	public function testDeleteNotFound()
 	{
 		$service = $this->getService();

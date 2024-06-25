@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Jobs\Tests;
+<?php namespace Meplato\Store2\Tests\Jobs;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,18 +13,18 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Jobs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests retrieving a job.
  */
-class GetTest extends BaseTest
+class GetTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to retrieve a job.
-	 *
-	 * @group jobs
-	 * @group jobs.get
 	 */
+	#[Group('jobs')]
+	#[Group('jobs.get')]
 	public function testSuccess()
 	{
 		$service = $this->getService();
@@ -39,10 +39,9 @@ class GetTest extends BaseTest
 
 	/**
 	 * Tests call to a job that does not exist.
-     *
-	 * @group jobs
-	 * @group jobs.get
 	 */
+	#[Group('jobs')]
+	#[Group('jobs.get')]
 	public function testNotFound()
 	{
 		$service = $this->getService();

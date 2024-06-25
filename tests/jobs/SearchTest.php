@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Jobs\Tests;
+<?php namespace Meplato\Store2\Tests\Jobs;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,18 +13,18 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Jobs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests searching for/listing jobs.
  */
-class SearchTest extends BaseTest
+class SearchTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful searching for jobs.
-	 *
-	 * @group jobs
-	 * @group jobs.search
 	 */
+	#[Group('jobs')]
+	#[Group('jobs.search')]
 	public function testSearch()
 	{
 		$service = $this->getService();
@@ -40,10 +40,9 @@ class SearchTest extends BaseTest
 
 	/**
 	 * Tests a searching for jobs when unauthorized.
-	 *
-	 * @group jobs
-	 * @group jobs.search
 	 */
+	#[Group('jobs')]
+	#[Group('jobs.search')]
 	public function testSearchUnauthorized()
 	{
 		$service = $this->getService();

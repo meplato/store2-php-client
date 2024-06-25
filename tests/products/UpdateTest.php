@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Products\Tests;
+<?php namespace Meplato\Store2\Tests\Products;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,6 +13,7 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests updating products.
@@ -22,14 +23,13 @@ use Meplato\Store2\Products\Service;
  * If you want to change all fields of a product, use Replace.
  *
  */
-class UpdateTest extends BaseTest
+class UpdateTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to update a product.
-	 *
-	 * @group products
-	 * @group products.update
 	 */
+	#[Group('products')]
+	#[Group('products.update')]
 	public function testUpdate()
 	{
 		// Update just updates the given fields, let's the rest unchanged.
