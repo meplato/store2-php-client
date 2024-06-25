@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Catalogs\Tests;
+<?php namespace Meplato\Store2\Tests\Catalogs;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,19 +13,19 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Catalogs\Service;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests the Catalogs service.
  */
-class ServiceTest extends BaseTest
+class ServiceTest extends BaseTestCase
 {
 	/**
 	 * Tests a the Catalogs service.
-	 *
-	 * @group catalogs
-	 * @group catalogs.service
-	 * @group service
 	 */
+	#[Group('catalogs')]
+	#[Group('catalogs.service')]
+	#[Group('service')]
 	public function testService()
 	{
 		$client = new HttpClient();

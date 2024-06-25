@@ -14,18 +14,18 @@
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Service;
 use GuzzleHttp\Message\Response;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests the Me service.
  */
-class MeTest extends BaseTest
+class MeTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to the Me service.
-	 *
-	 * @group root
-	 * @group me
 	 */
+	#[Group('root')]
+	#[Group('me')]
 	public function testSuccess()
 	{
 		$service = $this->getService();
@@ -58,10 +58,9 @@ class MeTest extends BaseTest
 
 	/**
 	 * Tests an unauthorized call to the Me service.
-	 *
-	 * @group root
-	 * @group me
 	 */
+	#[Group('root')]
+	#[Group('me')]
 	public function testUnauthorized()
 	{
 		$service = $this->getService();

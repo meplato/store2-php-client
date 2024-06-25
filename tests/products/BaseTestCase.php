@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Products\Tests;
+<?php namespace Meplato\Store2\Tests\Products;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -14,11 +14,12 @@
 /**
  * Base test for the Products service.
  */
-abstract class BaseTest extends \Meplato\Store2\Tests\BaseTest
+abstract class BaseTestCase extends \Meplato\Store2\Tests\BaseTestCase
 {
-	public function __construct()
-	{
-	parent::__construct();
+	private $service;
+
+	public function __construct($name = null, array $data = [], $dataName = '') {
+		parent::__construct($name, $data, $dataName);
 	}
 
 	public function getService()

@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Products\Tests;
+<?php namespace Meplato\Store2\Tests\Products;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -13,15 +13,15 @@
 
 use Meplato\Store2\HttpClient;
 use Meplato\Store2\Products\Service;
+use PHPUnit\Framework\Attributes\Group;
 
-class CreateTest extends BaseTest
+class CreateTest extends BaseTestCase
 {
 	/**
 	 * Tests a successful call to create a product.
-	 *
-	 * @group products
-	 * @group products.create
 	 */
+	#[Group('products')]
+	#[Group('products.create')]
 	public function testCreate()
 	{
 		$createProduct = [
@@ -46,10 +46,9 @@ class CreateTest extends BaseTest
 
 	/**
 	 * Tests missing mandatory field.
-	 *
-	 * @group products
-	 * @group products.create
 	 */
+	#[Group('products')]
+	#[Group('products.create')]
 	public function testCreateWithMissingRequiredFields()
 	{
 		$createProduct = [

@@ -69,8 +69,9 @@ $ phpunit --group catalogs
 All tests are mocked, i.e. there is no real access to a web server on
 the internet.
 
-Tests are tagged with `@group` to allow for easy testing of certain features.
+Tests are tagged with `#[Group('x')]` to allow for easy testing of certain features.
 If you e.g. want to only run tests of the Me Service, run `phpunit --group me`.
+To list all available groups you can run `phpunit --list-groups`  
 
 # License
 

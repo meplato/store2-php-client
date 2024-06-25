@@ -1,4 +1,4 @@
-<?php namespace Meplato\Store2\Availabilities\Tests;
+<?php namespace Meplato\Store2\Tests\Jobs;
 // Copyright (c) 2015 Meplato GmbH, Switzerland.
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -12,19 +12,20 @@
 // the License.
 
 /**
- * Base test for the Availabilities service.
+ * Base test for the Jobs service.
  */
-abstract class BaseTest extends \Meplato\Store2\Tests\BaseTest
+abstract class BaseTestCase extends \Meplato\Store2\Tests\BaseTestCase
 {
-	public function __construct()
-	{
-	parent::__construct();
+	private $service;
+
+	public function __construct($name = null, array $data = [], $dataName = '') {
+		parent::__construct($name, $data, $dataName);
 	}
 
 	public function getService()
 	{
 		$client = $this->getHttpClient();
-		$this->service = new \Meplato\Store2\Availabilities\Service($client);
+		$this->service = new \Meplato\Store2\Jobs\Service($client);
 		$this->service->setBaseURL("http://store2.go/api/v2");
 		return $this->service;
 	}

@@ -12,18 +12,18 @@
 // the License.
 
 use Meplato\Store2\HttpClient;
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Tests the Meplato Store 2 HTTP client.
  */
-class HttpClientTest extends BaseTest
+class HttpClientTest extends BaseTestCase
 {
 	/**
 	 * Test if the HTTP client works, in general.
-	 *
-	 * @group root
-	 * @group http
 	 */
+	#[Group('root')]
+	#[Group('http')]
 	public function testNewHttpClient()
 	{
 		$client = new HttpClient();
