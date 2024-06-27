@@ -21,7 +21,7 @@
         "guzzlehttp/uri-template": "^1.0"
     },
     "require-dev": {
-        "psr/log": "~1.0",
+        "psr/log": "~1.0 || ~3.0",
         "phpunit/phpunit": "~11.0"
     },
     "autoload": {
