@@ -28,10 +28,6 @@ abstract class BaseTestCase extends TestCase
 	/** Guzzle HTTP client, used by $httpClient internally. */
 	private $guzzleClient;
 
-	public function __construct($name = null, array $data = [], $dataName = '') {
-		parent::__construct($name, $data, $dataName);
-	}
-
 	/**
 	 * Meplato Store 2 HTTP client.
 	 */
